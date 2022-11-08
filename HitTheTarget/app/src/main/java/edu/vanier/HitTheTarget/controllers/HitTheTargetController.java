@@ -9,5 +9,36 @@ package edu.vanier.HitTheTarget.controllers;
  * @author maesh
  */
 public class HitTheTargetController {
+    @FXML
+    Button btnPlay = new Button();
+    
+    @FXML
+    public void initialize(){
+        System.out.println("Initializing play button...");
+        btnPlay.setOnAction((event) -> {
+            try {
+                startMainWindow(event);
+            } catch (IOException ex) {
+                Logger.getLogger(HitTheTargetController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+    
+    @FXML
+    public void startMainWindow(ActionEvent event) throws IOException{
+        FXMLLoader mainWindow = new FXMLLoader(
+        getClass().getResource("/fxml/menu_Window_Projectile_Simulation.fxml"));
+        
+        mainWindow.setController(new HitTheTargetController());
+        
+        Pane root = mainWindow.load();
+        
+        Scene scene = new Scene(root, 300, 600);
+        Stage stage2 = new Stage();
+        
+        stage2.setScene(scene);
+        stage2.setTitle("Projectile Simulation");
+        stage2.show();
+    }
     
 }
