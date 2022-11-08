@@ -31,7 +31,6 @@ public class MainApp extends Application {
         stage.setTitle("Hit The Target");
         stage.setResizable(false);
         stage.initStyle(StageStyle.UTILITY);
-        stage.setFullScreen(true);
         stage.show();
     }
 
