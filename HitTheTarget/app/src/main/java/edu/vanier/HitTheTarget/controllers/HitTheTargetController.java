@@ -44,7 +44,7 @@ public class HitTheTargetController {
         
         Pane root = mainWindow.load();
         
-        Scene scene = new Scene(root, 300, 600);
+        Scene scene = new Scene(root, 600, 600);
         Stage stage2 = new Stage();
         
         stage2.setScene(scene);

@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * This is a JavaFX project template to be used for creating GUI applications.
@@ -20,14 +21,16 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(
-        getClass().getResource("/fxml/MenuWindow.fxml"));
+        getClass().getResource("/fxml/MenuWindow2.0.fxml"));
         
         loader.setController(new HitTheTargetController());
         Pane root = loader.load();
         
-        Scene scene = new Scene(root, 300, 600);
+        Scene scene = new Scene(root, 600, 600);
         stage.setScene(scene);
         stage.setTitle("Hit The Target");
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UTILITY);
         stage.setFullScreen(true);
         stage.show();
     }
