@@ -19,7 +19,7 @@
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../JavaFx/Icons/fastbackward.jpg" />
+                        <Image url="@../images/fastbackward.jpg" />
                      </image>
                   </ImageView>
                </graphic>
@@ -28,7 +28,7 @@
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../JavaFx/Icons/play.jpg" />
+                        <Image url="@../images/play.jpg" />
                      </image>
                   </ImageView>
                </graphic>
@@ -37,7 +37,7 @@
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../JavaFx/Icons/fastforward.jpg" />
+                        <Image url="@../images/fastforward.jpg" />
                      </image>
                   </ImageView>
                </graphic>
