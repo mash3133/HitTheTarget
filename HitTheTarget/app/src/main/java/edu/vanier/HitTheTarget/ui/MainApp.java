@@ -28,7 +28,6 @@ public class MainApp extends Application {
         Scene scene = new Scene(root, 300, 600);
         stage.setScene(scene);
         stage.setTitle("Hit The Target");
-        stage.setFullScreen(true);
         stage.show();
     }
 
