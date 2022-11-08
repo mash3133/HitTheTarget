@@ -29,8 +29,6 @@ public class MainApp extends Application {
         Scene scene = new Scene(root, 600, 600);
         stage.setScene(scene);
         stage.setTitle("Hit The Target");
-        stage.setResizable(false);
-        stage.initStyle(StageStyle.UTILITY);
         stage.show();
     }
 
