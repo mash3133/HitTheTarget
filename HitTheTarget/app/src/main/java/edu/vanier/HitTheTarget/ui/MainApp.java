@@ -1,6 +1,7 @@
 package edu.vanier.HitTheTarget.ui;
 
 import edu.vanier.HitTheTarget.controllers.HitTheTargetController;
+import edu.vanier.HitTheTarget.controllers.MainMenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,7 +24,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(
         getClass().getResource("/fxml/MenuWindow2.0.fxml"));
         
-        loader.setController(new HitTheTargetController());
+        loader.setController(new MainMenuController());
         Pane root = loader.load();
         
         Scene scene = new Scene(root, 600, 600);
