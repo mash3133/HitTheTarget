@@ -45,9 +45,9 @@ public class MainMenuController {
 
         stage2.setScene(scene);
         stage2.setTitle("Projectile Simulation");
-        stage2.setMaximized(true);
+        stage2.setMaximized(false);
         stage2.show();
-        /
+        
     }
 
 }
