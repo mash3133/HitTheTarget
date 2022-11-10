@@ -1,6 +1,6 @@
 package edu.vanier.HitTheTarget.ui;
 
-import edu.vanier.HitTheTarget.controllers.HitTheTargetController;
+import edu.vanier.HitTheTarget.controllers.MainAppController;
 import edu.vanier.HitTheTarget.controllers.MainMenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(
-        getClass().getResource("/fxml/MenuWindow2.0.fxml"));
+        getClass().getResource("/fxml/MenuWindow.fxml"));
         
         loader.setController(new MainMenuController());
         Pane root = loader.load();
