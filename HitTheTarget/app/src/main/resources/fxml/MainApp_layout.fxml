@@ -48,7 +48,7 @@
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/fastbackward.jpg" />
+                                <Image url="@../images/pause.jpg" />
                             </image>
                         </ImageView>
                     </graphic>
