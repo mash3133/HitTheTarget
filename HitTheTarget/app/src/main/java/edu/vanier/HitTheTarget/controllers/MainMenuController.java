@@ -26,7 +26,7 @@ public class MainMenuController {
             try {
                 startMainWindow(event);
             } catch (IOException ex) {
-                Logger.getLogger(HitTheTargetController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
@@ -36,7 +36,7 @@ public class MainMenuController {
         FXMLLoader mainWindow = new FXMLLoader(
                 getClass().getResource("/fxml/MainApp_layout.fxml"));
 
-        mainWindow.setController(new HitTheTargetController());
+        mainWindow.setController(new MainAppController());
 
         Pane root = mainWindow.load();
 
@@ -47,6 +47,5 @@ public class MainMenuController {
         stage2.setTitle("Projectile Simulation");
         stage2.setMaximized(true);
         stage2.show();
-        
-            }
     }
+}
