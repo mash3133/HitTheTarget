@@ -64,7 +64,7 @@
                     <graphic>
                         <ImageView fitHeight="26.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/replay.png" />
+                                <Image url="@../images/restart.png" />
                             </image>
                         </ImageView>
                     </graphic>

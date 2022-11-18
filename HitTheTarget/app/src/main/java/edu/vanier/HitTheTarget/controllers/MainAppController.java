@@ -51,8 +51,8 @@ public class MainAppController {
         Stage stage2 = new Stage();
 
         stage2.setScene(scene);
-        stage2.setTitle("Projectile Simulation");
-        stage2.setMaximized(true);
+        stage2.setTitle("Projectile Simulation");      
+        stage2.setFullScreen(true);
         stage2.show();
     }
 
