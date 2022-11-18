@@ -15,7 +15,7 @@ import javafx.stage.StageStyle;
  * JavaFX 18 is already linked to this project in the build.gradle file.
  * @link: https://openjfx.io/javadoc/18/
  * @see: Build Scripts/build.gradle
- * @author Sleiman Rabah.
+ * @author
  */
 public class MainApp extends Application {
 
