@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,23 +15,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <right>
         <VBox prefHeight="623.0" prefWidth="242.0" BorderPane.alignment="CENTER">
             <children>
                 <Pane prefHeight="540.0" prefWidth="196.0">
                     <children>
-                        <Label layoutX="23.0" layoutY="50.0" text="Initial velocity" />
-                        <TextField layoutX="107.0" layoutY="46.0" prefHeight="25.0" prefWidth="53.0" />
-                        <Slider layoutX="25.0" layoutY="108.0" />
-                        <Label layoutX="80.0" layoutY="150.0" text="Gravity" />
+                        <Label layoutX="24.0" layoutY="85.0" text="Initial velocity" />
+                        <TextField layoutX="150.0" layoutY="81.0" prefHeight="25.0" prefWidth="53.0" />
+                        <Label layoutX="102.0" layoutY="165.0" text="Gravity" />
                         <RadioButton layoutX="13.0" layoutY="202.0" mnemonicParsing="false" text="Mars" />
-                        <RadioButton layoutX="69.0" layoutY="202.0" mnemonicParsing="false" text="Earth" />
-                        <RadioButton layoutX="134.0" layoutY="202.0" mnemonicParsing="false" text="Moon" />
-                        <Label layoutX="28.0" layoutY="312.0" text="Height" />
-                        <TextField layoutX="91.0" layoutY="308.0" prefHeight="25.0" prefWidth="85.0" />
-                        <Label layoutX="30.0" layoutY="382.0" text="Angle" />
-                        <TextField layoutX="92.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
+                        <RadioButton layoutX="97.0" layoutY="202.0" mnemonicParsing="false" text="Earth" />
+                        <RadioButton layoutX="176.0" layoutY="202.0" mnemonicParsing="false" text="Moon" />
+                        <Label layoutX="25.0" layoutY="312.0" prefHeight="17.0" prefWidth="70.0" text="Initial height" />
+                        <TextField layoutX="121.0" layoutY="308.0" prefHeight="25.0" prefWidth="85.0" />
+                        <Label layoutX="37.0" layoutY="382.0" text="Angle" />
+                        <TextField layoutX="121.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
                     </children>
                 </Pane>
             </children>
@@ -66,11 +64,12 @@
                     <graphic>
                         <ImageView fitHeight="26.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/fastforward.jpg" />
+                                <Image url="@../images/replay.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" />

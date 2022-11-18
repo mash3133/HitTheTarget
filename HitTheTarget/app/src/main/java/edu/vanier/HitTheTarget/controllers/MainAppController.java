@@ -18,13 +18,14 @@ import javafx.stage.Stage;
  * @author maesh
  */
 public class MainAppController {
-
+    
     @FXML
     Button btnPlay = new Button();
     @FXML
     MenuItem mnItemClose;
-
     @FXML
+    
+    
     public void initialize() {
         System.out.println("Initializing play button...");
         //mnItemClose.setOnAction(this::closeApplication);

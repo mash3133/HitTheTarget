@@ -134,6 +134,4 @@ public class MainAppMath {
        
         this.distance=this.vx0*this.time;
     }
-    
-    
 }
