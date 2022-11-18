@@ -31,6 +31,8 @@
                         <TextField layoutX="121.0" layoutY="308.0" prefHeight="25.0" prefWidth="85.0" />
                         <Label layoutX="37.0" layoutY="382.0" text="Angle" />
                         <TextField layoutX="121.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
+                  <Label layoutX="37.0" layoutY="447.0" text="Mass" />
+                  <TextField layoutX="121.0" layoutY="443.0" prefHeight="25.0" prefWidth="85.0" />
                     </children>
                 </Pane>
             </children>
