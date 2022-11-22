@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -20,16 +21,27 @@ import javafx.stage.Stage;
  */
 public class MainAppController {
     
+    //buttons
     @FXML
     Button btnPlay = new Button();
     @FXML
-    MenuItem mnItemClose;
+    RadioButton marsGravity = new RadioButton();
+    @FXML
+    RadioButton earthGravity = new RadioButton();
+    @FXML
+    RadioButton moonGravity = new RadioButton();
+    
+    //textfield
     @FXML
     TextField initialVelocity = new TextField();
     @FXML
     TextField initialHeight = new TextField();
     @FXML
     TextField angle = new TextField();
+    
+    @FXML
+    MenuItem mnItemClose;
+    
     
     
     public void initialize() {
