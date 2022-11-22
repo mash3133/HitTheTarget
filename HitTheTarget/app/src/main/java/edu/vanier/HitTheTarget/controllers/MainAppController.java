@@ -47,38 +47,6 @@ public class MainAppController {
     //toolbar
     @FXML
     MenuItem mnItemClose;
-    
-    
-    
-    public void initialize() {
-        System.out.println("Initializing play button...");
-        //mnItemClose.setOnAction(this::closeApplication);
-        btnPlay.setOnAction((event) -> {
-            try {
-                startMainWindow(event);
-            } catch (IOException ex) {
-                Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-    }
-
-    @FXML
-    public void startMainWindow(ActionEvent event) throws IOException {
-        FXMLLoader mainWindow = new FXMLLoader(
-                getClass().getResource("/fxml/MainApp_layout.fxml"));
-
-        mainWindow.setController(new MainAppController());
-
-        Pane root = mainWindow.load();
-
-        Scene scene = new Scene(root, 600, 600);
-        Stage stage2 = new Stage();
-
-        stage2.setScene(scene);
-        stage2.setTitle("Projectile Simulation");      
-        stage2.setFullScreen(true);
-        stage2.show();
-    }
 
     @FXML
     private void handleCloseApp(ActionEvent event) {
