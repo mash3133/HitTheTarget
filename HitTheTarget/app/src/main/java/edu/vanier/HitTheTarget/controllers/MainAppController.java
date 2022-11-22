@@ -25,6 +25,11 @@ public class MainAppController {
     @FXML
     Button btnPlay = new Button();
     @FXML
+    Button btnPause = new Button();
+    @FXML
+    Button btnReplay = new Button();
+    
+    @FXML
     RadioButton marsGravity = new RadioButton();
     @FXML
     RadioButton earthGravity = new RadioButton();
@@ -39,6 +44,7 @@ public class MainAppController {
     @FXML
     TextField angle = new TextField();
     
+    //toolbar
     @FXML
     MenuItem mnItemClose;
     
