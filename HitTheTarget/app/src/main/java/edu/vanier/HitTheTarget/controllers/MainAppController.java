@@ -47,7 +47,24 @@ public class MainAppController {
     //toolbar
     @FXML
     MenuItem mnItemClose;
+    
+    //methods
+    @FXML
+    public void initializeInitialVelocity() {
+        System.out.println("Initializing textfield initial velocity...");
+        btnPlay.setOnAction((e1) -> {
+            try {
+                handleInitialVelocity(e1);
+            } catch (IOException ex) {
+                Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
 
+    @FXML
+    public void handleInitialVelocity(ActionEvent e1) throws IOException {
+    }
+    
     @FXML
     private void handleCloseApp(ActionEvent event) {
         Platform.exit();
