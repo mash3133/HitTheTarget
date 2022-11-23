@@ -25,13 +25,13 @@
                         <Label layoutX="24.0" layoutY="85.0" text="Initial velocity" />
                         <TextField fx:id="initalVelocity" layoutX="150.0" layoutY="81.0" prefHeight="25.0" prefWidth="53.0" />
                         <Label layoutX="102.0" layoutY="165.0" text="Gravity" />
-                        <RadioButton fx:id="marsGravity" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" text="Mars">
+                        <RadioButton fx:id="mars" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Mars">
                      <toggleGroup>
                         <ToggleGroup fx:id="gravityOptions" />
                      </toggleGroup>
                   </RadioButton>
-                        <RadioButton fx:id="earthGravity" layoutX="97.0" layoutY="202.0" mnemonicParsing="false" text="Earth" toggleGroup="$gravityOptions" />
-                        <RadioButton fx:id="moonGravity" layoutX="176.0" layoutY="202.0" mnemonicParsing="false" text="Moon" toggleGroup="$gravityOptions" />
+                        <RadioButton fx:id="earth" layoutX="97.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Earth" toggleGroup="$gravityOptions" />
+                        <RadioButton fx:id="moon" layoutX="176.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Moon" toggleGroup="$gravityOptions" />
                         <Label layoutX="25.0" layoutY="312.0" prefHeight="17.0" prefWidth="70.0" text="Initial height" />
                         <TextField fx:id="initialHeight" layoutX="121.0" layoutY="308.0" prefHeight="25.0" prefWidth="85.0" />
                         <Label layoutX="37.0" layoutY="382.0" text="Angle" />
