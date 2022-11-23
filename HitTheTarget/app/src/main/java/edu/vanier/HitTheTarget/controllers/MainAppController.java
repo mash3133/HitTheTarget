@@ -20,6 +20,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -51,6 +58,14 @@ public class MainAppController {
     private static Color black = Color.BLACK;
     private static int speed = 1;
     
+    private static final String RESOURCES_FOLDER = "";
+    private static final String IMAGES_FOLDER = RESOURCES_FOLDER + "Images/";
+    
+    public static final String MARS_LANDSCAPE = IMAGES_FOLDER + "mars landscape.jpg";
+    public static final String EARTH_LANDSCAPE = IMAGES_FOLDER + "earth landscape.jpg";
+    public static final String MOON_LANDSCAPE = IMAGES_FOLDER + "moon landscape.jpg";
+
+    
     //buttons
     @FXML
     Button btnPlay = new Button();
@@ -58,6 +73,19 @@ public class MainAppController {
     Button btnPause = new Button();
     @FXML
     Button btnReplay = new Button();
+    
+    @FXML
+    ToggleGroup gravityOptions = new ToggleGroup();
+    
+    @FXML
+    RadioButton mars = new RadioButton();
+    @FXML
+    RadioButton earth = new RadioButton();
+    @FXML
+    RadioButton moon = new RadioButton();
+    
+    @FXML
+    Pane pane = new Pane();
     
     //textfield
     @FXML
@@ -279,4 +307,22 @@ public class MainAppController {
         this.mnItemClose = mnItemClose;
     }
     
+    public void chosenGravity(ActionEvent event){
+        
+        if(mars.isSelected()){
+            
+            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+            BackgroundSize.DEFAULT);
+            pane.setBackground(new Background(marsImage));
+            
+        } else if (earth.isSelected()){
+            
+            pane.setStyle(EARTH_LANDSCAPE);
+            
+        } else if (moon.isSelected()){
+            
+            pane.setStyle(MOON_LANDSCAPE);
+            
+        }
+    }
 }
