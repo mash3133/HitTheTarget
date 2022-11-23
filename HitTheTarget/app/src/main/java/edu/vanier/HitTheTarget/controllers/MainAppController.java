@@ -21,6 +21,8 @@ import javafx.stage.Stage;
  * @author maesh
  */
 public class MainAppController {
+    //variable 
+
     
     //buttons
     @FXML
