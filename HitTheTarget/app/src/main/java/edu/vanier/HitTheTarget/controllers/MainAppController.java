@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -28,6 +29,9 @@ public class MainAppController {
     Button btnPause = new Button();
     @FXML
     Button btnReplay = new Button();
+    
+    @FXML
+    ToggleGroup gravityOptions = new ToggleGroup();
     
     @FXML
     RadioButton marsGravity = new RadioButton();
