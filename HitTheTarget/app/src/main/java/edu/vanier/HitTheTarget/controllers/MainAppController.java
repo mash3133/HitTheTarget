@@ -24,7 +24,7 @@ public class MainAppController {
     //buttons
     @FXML
     Button btnPlay = new Button();
-    @FXML
+    @FXML      
     Button btnPause = new Button();
     @FXML
     Button btnReplay = new Button();
