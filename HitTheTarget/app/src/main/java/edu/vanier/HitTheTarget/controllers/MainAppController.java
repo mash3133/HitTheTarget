@@ -315,7 +315,8 @@ public class MainAppController {
             BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
-            BackgroundSize.DEFAULT);
+            new BackgroundSize(1.0,1.0, true, true, false, false));
+            
             pane.setBackground(new Background(marsImage));
             
         } else if (earth.isSelected()){
@@ -324,7 +325,7 @@ public class MainAppController {
             BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
-            BackgroundSize.DEFAULT);
+            new BackgroundSize(1.0,1.0, true, true, false, false));
             pane.setBackground(new Background(earthImage));
             pane.setStyle(EARTH_LANDSCAPE);
             
