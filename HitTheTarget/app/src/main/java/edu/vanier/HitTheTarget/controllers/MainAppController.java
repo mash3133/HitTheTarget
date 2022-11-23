@@ -95,7 +95,9 @@ public class MainAppController {
         
         if(marsGravity.isSelected()){
             
-            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.DEFAULT,
             BackgroundSize.DEFAULT);
             pane.setBackground(new Background(marsImage));
             
