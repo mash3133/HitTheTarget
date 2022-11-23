@@ -307,11 +307,11 @@ public class MainAppController {
         this.mnItemClose = mnItemClose;
     }
     
+    //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
         
         if(mars.isSelected()){
-            
-            //Change position of image
+
             BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
@@ -320,8 +320,7 @@ public class MainAppController {
             pane.setBackground(new Background(marsImage));
             
         } else if (earth.isSelected()){
-            
-            //Change position of image
+
             BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
@@ -330,8 +329,7 @@ public class MainAppController {
             pane.setStyle(EARTH_LANDSCAPE);
             
         } else if (moon.isSelected()){
-            
-            //Position is good
+
             BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
