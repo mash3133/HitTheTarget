@@ -8,7 +8,8 @@ package edu.vanier.HitTheTarget.math;
  *
  * @author maesh
  */
-public class MainAppMath {
+public class MathMainApp {
+    
     
     private double x,y,vx,vy,ax,ay,speed,time,angle,y0,vx0,vy0,distance;
 
@@ -117,7 +118,7 @@ public class MainAppMath {
     }
     
     
-    public MainAppMath(double y, double angle, double speed, double gravity) 
+    public MathMainApp(double y, double angle, double speed, double gravity) 
     {
         this.y0=y;
         this.y = y;
