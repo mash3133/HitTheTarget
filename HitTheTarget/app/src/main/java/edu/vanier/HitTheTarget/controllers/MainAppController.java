@@ -121,6 +121,25 @@ public class MainAppController {
         Platform.exit();
     }
     
+    public void chosenGravity(ActionEvent event) {
+
+        if (mars.isSelected()) {
+
+            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                    BackgroundSize.DEFAULT);
+            pane.setBackground(new Background(marsImage));
+
+        } else if (earth.isSelected()) {
+
+            pane.setStyle(EARTH_LANDSCAPE);
+
+        } else if (moon.isSelected()) {
+
+            pane.setStyle(MOON_LANDSCAPE);
+
+        }
+    }
+    
     //mutators
 
     public Polyline getPl() {
@@ -305,24 +324,5 @@ public class MainAppController {
 
     public void setMnItemClose(MenuItem mnItemClose) {
         this.mnItemClose = mnItemClose;
-    }
-    
-    public void chosenGravity(ActionEvent event){
-        
-        if(mars.isSelected()){
-            
-            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-            BackgroundSize.DEFAULT);
-            pane.setBackground(new Background(marsImage));
-            
-        } else if (earth.isSelected()){
-            
-            pane.setStyle(EARTH_LANDSCAPE);
-            
-        } else if (moon.isSelected()){
-            
-            pane.setStyle(MOON_LANDSCAPE);
-            
-        }
     }
 }

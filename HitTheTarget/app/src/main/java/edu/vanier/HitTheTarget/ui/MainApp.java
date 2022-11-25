@@ -2,8 +2,10 @@ package edu.vanier.HitTheTarget.ui;
 
 import edu.vanier.HitTheTarget.controllers.MainAppController;
 import edu.vanier.HitTheTarget.controllers.MainMenuController;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -18,7 +20,9 @@ import javafx.stage.StageStyle;
  * @author
  */
 public class MainApp extends Application {
-
+    
+    public static ArrayList<Point2D> points;
+    
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(
