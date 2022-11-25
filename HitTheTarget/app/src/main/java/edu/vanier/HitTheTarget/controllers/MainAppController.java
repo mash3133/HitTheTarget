@@ -338,5 +338,7 @@ public class MainAppController {
             pane.setStyle(MOON_LANDSCAPE);
             
         }
+        
+    //Take screenshots button
     }
 }
