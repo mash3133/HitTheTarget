@@ -2,7 +2,10 @@ package edu.vanier.HitTheTarget.controllers;
 
 import database.Database;
 import edu.vanier.HitTheTarget.math.MathMainApp;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -101,6 +104,9 @@ public class MainAppController {
     @FXML
     MenuItem mnItemClose;
     
+    @FXML
+    MenuItem mnItemScreenshot;
+    
     //methods
     @FXML
     public void initializeInitialVelocity() {
@@ -112,6 +118,25 @@ public class MainAppController {
                 Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+    }
+    
+    //Take screenshots button
+    @FXML
+    public void handleTakeScreenshot(ActionEvent e1){
+        
+        new File("/Documents/SavedScreenshotsProjectileMotion").mkdirs();
+        try {
+            
+            //Create folder where screenshots will be saved
+            //Files.createDirectory(Paths.get("/Documents/SavedScreenshotsProjectileMotion/"));
+            
+            
+            
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        
+        }
     }
     
     @FXML
@@ -342,6 +367,7 @@ public class MainAppController {
             
         }
         
-    //Take screenshots button
+    
+    
     }
 }

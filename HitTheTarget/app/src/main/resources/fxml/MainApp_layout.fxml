@@ -86,8 +86,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Options">
             <items>
-              <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Screenshot" />
-                  <MenuItem fx:id="mnItemClose1" mnemonicParsing="false" onAction="#handleCloseApp" text="See saved screenshots" />
+              <MenuItem fx:id="mnItemScreenshot" mnemonicParsing="false" onAction="#handleTakeScreenshot" text="Screenshot" />
+                  <MenuItem mnemonicParsing="false" text="See saved screenshots" />
+                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
