@@ -309,6 +309,7 @@ public class MainAppController {
         this.mnItemClose = mnItemClose;
     }
     
+    
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
         
