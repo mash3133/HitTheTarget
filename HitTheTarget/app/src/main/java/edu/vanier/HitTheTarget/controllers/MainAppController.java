@@ -74,6 +74,8 @@ public class MainAppController {
     @FXML
     Button btnReplay = new Button();
     
+    
+    
     @FXML
     ToggleGroup gravityOptions = new ToggleGroup();
     
