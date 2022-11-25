@@ -1,6 +1,6 @@
 package edu.vanier.HitTheTarget.controllers;
 
-import edu.vanier.hitthetarget.database.Database;
+import edu.vanier.hitthetarget.database.SQLiteDatabase;
 import edu.vanier.HitTheTarget.math.MathMainApp;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -57,7 +57,7 @@ public class MainAppController {
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
     
-    private static Database connectionProvider = new Database();
+    private static SQLiteDatabase connectionProvider = new SQLiteDatabase();
     private static Connection connection = connectionProvider.getConnection();
     private static double marsGravity = 3.72;
     private static double earthGravity = 9.81;
@@ -293,11 +293,11 @@ public class MainAppController {
         MainAppController.points = points;
     }
 
-    public static Database getConnectionProvider() {
+    public static SQLiteDatabase getConnectionProvider() {
         return connectionProvider;
     }
 
-    public static void setConnectionProvider(Database connectionProvider) {
+    public static void setConnectionProvider(SQLiteDatabase connectionProvider) {
         MainAppController.connectionProvider = connectionProvider;
     }
 
