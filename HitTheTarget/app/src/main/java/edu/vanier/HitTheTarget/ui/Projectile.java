@@ -9,6 +9,7 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -29,6 +30,9 @@ public class Projectile extends Application{
 
         this.stage = stage;
         GUI u = new GUI();
+        
+        Image logo = new Image("target.png");
+        stage.getIcons().add(logo);
         
         Scene scene = new Scene(u,975, 800);
         stage.setTitle("Projectile in Motion Path");
