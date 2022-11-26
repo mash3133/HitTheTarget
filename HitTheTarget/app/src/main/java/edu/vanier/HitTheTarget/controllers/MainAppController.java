@@ -2,11 +2,14 @@ package edu.vanier.HitTheTarget.controllers;
 
 import edu.vanier.hitthetarget.database.SQLiteDatabase;
 import edu.vanier.HitTheTarget.math.MathMainApp;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
@@ -95,6 +98,11 @@ public class MainAppController {
     @FXML
     Pane pane = new Pane();
     
+    @FXML
+    Circle circle = new Circle();
+    private double x;
+    private double y;
+    
     //textfield
     @FXML
     TextField initialVelocity = new TextField();
@@ -107,7 +115,82 @@ public class MainAppController {
     @FXML
     MenuItem mnItemClose;
     
-    //methods
+    //methods for hit the target
+    //position circle
+    
+    @FXML
+    public void initialize() {
+        System.out.println("Initializing start button...");
+        btnStart.setOnAction((event) -> {
+            start(event);
+        }
+        );
+    }
+    
+    @FXML
+    public void start(ActionEvent event){
+        System.out.println("start button was pressed");
+        circle.setCenterX(0);
+        try{
+            circle.setCenterY((Double.parseDouble(getInitialHeight().getText()))* -1 - 30);
+        
+            if(Double.parseDouble(getInitialHeight().getText())<0 && (Double.parseDouble(getInitialHeight().getText()))>500){
+            System.out.println("enter a positive value");
+            }
+        }
+        catch(java.lang.NumberFormatException e){
+            Stage stage = new Stage();
+            this.pane = new GridPane();
+            Label lbl = new Label();
+            
+            this.pane.getChildren().add(new Label("Please enter positive value"));
+            Scene scene = new Scene(pane, 510, 285);
+            stage.setScene(scene);
+            stage.setTitle("Error");
+            stage.show();
+        }
+        catch(Exception e){
+            System.out.println(e);
+}
+    }
+    
+    //Change background depending on gravity chosen
+    public void chosenGravity(ActionEvent event){
+        
+        if(mars.isSelected()){
+
+            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.DEFAULT,
+            new BackgroundSize(1.0,1.0, true, true, false, false));
+            
+            pane.setBackground(new Background(marsImage));
+            
+        } else if (earth.isSelected()){
+
+            BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.DEFAULT,
+            new BackgroundSize(1.0,1.0, true, true, false, false));
+            pane.setBackground(new Background(earthImage));
+            pane.setStyle(EARTH_LANDSCAPE);
+            
+        } else if (moon.isSelected()){
+
+            BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.DEFAULT,
+            BackgroundSize.DEFAULT);
+            pane.setBackground(new Background(moonImage));
+            pane.setStyle(MOON_LANDSCAPE);
+            
+        }
+    }
+    //Take screenshots button
+    
+    
+    
+    //methods for projectile 
     public void startEventHandler(Event e)
     {
         if(Double.parseDouble(getAngle().getText())>0 && Double.parseDouble(getInitialVelocity().getText())>0)
@@ -226,7 +309,6 @@ public class MainAppController {
     }
     
     //mutators
-
     public Polyline getPl() {
         return pl;
     }
@@ -409,41 +491,5 @@ public class MainAppController {
 
     public void setMnItemClose(MenuItem mnItemClose) {
         this.mnItemClose = mnItemClose;
-    }
-  
-    
-    //Change background depending on gravity chosen
-    public void chosenGravity(ActionEvent event){
-        
-        if(mars.isSelected()){
-
-            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
-            BackgroundRepeat.NO_REPEAT, 
-            BackgroundPosition.DEFAULT,
-            new BackgroundSize(1.0,1.0, true, true, false, false));
-            
-            pane.setBackground(new Background(marsImage));
-            
-        } else if (earth.isSelected()){
-
-            BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
-            BackgroundRepeat.NO_REPEAT, 
-            BackgroundPosition.DEFAULT,
-            new BackgroundSize(1.0,1.0, true, true, false, false));
-            pane.setBackground(new Background(earthImage));
-            pane.setStyle(EARTH_LANDSCAPE);
-            
-        } else if (moon.isSelected()){
-
-            BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
-            BackgroundRepeat.NO_REPEAT, 
-            BackgroundPosition.DEFAULT,
-            BackgroundSize.DEFAULT);
-            pane.setBackground(new Background(moonImage));
-            pane.setStyle(MOON_LANDSCAPE);
-            
-        }
-        
-    //Take screenshots button
     }
 }
