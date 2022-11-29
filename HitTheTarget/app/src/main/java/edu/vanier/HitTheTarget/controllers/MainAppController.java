@@ -118,16 +118,15 @@ public class MainAppController {
     @FXML
     MenuItem mnItemClose;
     
-<<<<<<< HEAD
+
     @FXML
     MenuItem mnItemScreenshot;
     
     //methods
-=======
+
     //methods for hit the target
     //position circle
-    
->>>>>>> 69577594281de935a46c4be6e7ca550d6aa2e6f4
+
     @FXML
     public void initialize() {
         System.out.println("Initializing start button...");
@@ -521,44 +520,8 @@ public class MainAppController {
     public void setMnItemClose(MenuItem mnItemClose) {
         this.mnItemClose = mnItemClose;
     }
-<<<<<<< HEAD
+ 
     
     
-    //Change background depending on gravity chosen
-    public void chosenGravity(ActionEvent event){
-        
-        if(mars.isSelected()){
 
-            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
-            BackgroundRepeat.NO_REPEAT, 
-            BackgroundPosition.DEFAULT,
-            new BackgroundSize(1.0,1.0, true, true, false, false));
-            
-            pane.setBackground(new Background(marsImage));
-            
-        } else if (earth.isSelected()){
-
-            BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
-            BackgroundRepeat.NO_REPEAT, 
-            BackgroundPosition.DEFAULT,
-            new BackgroundSize(1.0,1.0, true, true, false, false));
-            pane.setBackground(new Background(earthImage));
-            pane.setStyle(EARTH_LANDSCAPE);
-            
-        } else if (moon.isSelected()){
-
-            BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
-            BackgroundRepeat.NO_REPEAT, 
-            BackgroundPosition.DEFAULT,
-            BackgroundSize.DEFAULT);
-            pane.setBackground(new Background(moonImage));
-            pane.setStyle(MOON_LANDSCAPE);
-            
-        }
-        
-    
-    
-    }
-=======
->>>>>>> 69577594281de935a46c4be6e7ca550d6aa2e6f4
 }
