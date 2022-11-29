@@ -1,25 +1,33 @@
 package edu.vanier.HitTheTarget.controllers;
 
-import database.Database;
+import edu.vanier.hitthetarget.database.SQLiteDatabase;
 import edu.vanier.HitTheTarget.math.MathMainApp;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -30,11 +38,13 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polyline;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -51,8 +61,9 @@ public class MainAppController {
     private static Timeline timeline;
     private double currentTime = 0.0;
     private static ArrayList<Point2D> points;
+    public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
     
-    private static Database connectionProvider = new Database();
+    private static SQLiteDatabase connectionProvider = new SQLiteDatabase();
     private static Connection connection = connectionProvider.getConnection();
     private static double marsGravity = 3.72;
     private static double earthGravity = 9.81;
@@ -71,13 +82,11 @@ public class MainAppController {
     
     //buttons
     @FXML
-    Button btnPlay = new Button();
+    Button btnStart = new Button();
     @FXML      
     Button btnPause = new Button();
     @FXML
     Button btnReplay = new Button();
-    
-    
     
     @FXML
     ToggleGroup gravityOptions = new ToggleGroup();
@@ -92,6 +101,11 @@ public class MainAppController {
     @FXML
     Pane pane = new Pane();
     
+    @FXML
+    Circle circle = new Circle();
+    private double x;
+    private double y;
+    
     //textfield
     @FXML
     TextField initialVelocity = new TextField();
@@ -104,20 +118,23 @@ public class MainAppController {
     @FXML
     MenuItem mnItemClose;
     
+<<<<<<< HEAD
     @FXML
     MenuItem mnItemScreenshot;
     
     //methods
+=======
+    //methods for hit the target
+    //position circle
+    
+>>>>>>> 69577594281de935a46c4be6e7ca550d6aa2e6f4
     @FXML
-    public void initializeInitialVelocity() {
-        System.out.println("Initializing textfield initial velocity...");
-        btnPlay.setOnAction((e1) -> {
-            try {
-                handleInitialVelocity(e1);
-            } catch (IOException ex) {
-                Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+    public void initialize() {
+        System.out.println("Initializing start button...");
+        btnStart.setOnAction((event) -> {
+            start(event);
+        }
+        );
     }
     
     //Take screenshots button
@@ -140,8 +157,180 @@ public class MainAppController {
     }
     
     @FXML
-    public void handleInitialVelocity(ActionEvent e1) throws IOException {
+    public void start(ActionEvent event){
+        System.out.println("start button was pressed");
+        circle.setCenterX(0);
+        try{
+            circle.setCenterY((Double.parseDouble(getInitialHeight().getText()))* -1 - 30);
+        
+            if(Double.parseDouble(getInitialHeight().getText())<0 && (Double.parseDouble(getInitialHeight().getText()))>500){
+            System.out.println("enter a positive value");
+            }
+        }
+        catch(java.lang.NumberFormatException e){
+            Stage stage = new Stage();
+            this.pane = new GridPane();
+            Label lbl = new Label();
+            
+            this.pane.getChildren().add(new Label("Please enter positive value"));
+            Scene scene = new Scene(pane, 510, 285);
+            stage.setScene(scene);
+            stage.setTitle("Error");
+            stage.show();
+        }
+        catch(Exception e){
+            System.out.println(e);
 }
+    }
+    
+    //Change background depending on gravity chosen
+    public void chosenGravity(ActionEvent event){
+        
+        if(mars.isSelected()){
+
+            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.DEFAULT,
+            new BackgroundSize(1.0,1.0, true, true, false, false));
+            
+            pane.setBackground(new Background(marsImage));
+            
+        } else if (earth.isSelected()){
+
+            BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.DEFAULT,
+            new BackgroundSize(1.0,1.0, true, true, false, false));
+            pane.setBackground(new Background(earthImage));
+            pane.setStyle(EARTH_LANDSCAPE);
+            
+        } else if (moon.isSelected()){
+
+            BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.DEFAULT,
+            BackgroundSize.DEFAULT);
+            pane.setBackground(new Background(moonImage));
+            pane.setStyle(MOON_LANDSCAPE);
+            
+        }
+    }
+    //Take screenshots button
+    
+    
+    
+    //methods for projectile 
+    public void startEventHandler(Event e)
+    {
+        if(Double.parseDouble(getAngle().getText())>0 && Double.parseDouble(getInitialVelocity().getText())>0)
+        {
+            mmp = new MathMainApp(Double.parseDouble(getInitialHeight().getText()),Double.parseDouble(getAngle().getText()),Double.parseDouble(getInitialVelocity().getText()),earthGravity);
+            points = mmp.getPoints();
+            pt = new PathTransition(Duration.seconds(mmp.getTime()/speed), pl, dot);
+            items.add(mmp);
+            animate();
+            time();
+            pane.getChildren().addAll(pl,dot);
+            pt.play();
+            btnStart.setDisable(true);
+        
+        }   else{
+            Stage stage = new Stage();
+            this.pane = new GridPane();
+            
+            this.pane.getChildren().add(new Label("Please enter positive value"));
+            Scene scene = new Scene(pane, 510, 285);
+            stage.setScene(scene);
+            stage.setTitle("Error");
+            stage.show();
+        }
+            
+        
+    }
+    public void pauseEventHandler(Event e) {
+           if(btnPause.getText().equals("Pause"))
+           {    
+               btnPause.setText("Resume");
+               timeline.pause();
+               pt.pause();
+           }
+           else
+           {
+               btnPause.setText("Pause");
+               timeline.play();
+               pt.play();
+           }
+    }
+    
+    public void resetEventHandler(Event e){
+        
+        pane.getChildren().clear();
+        currentTime=0.0;
+        timeline.stop();
+        pt.stop();
+        pl.getPoints().clear();
+        btnStart.setDisable(false);
+    }
+    
+    void time(){
+        timeline = new Timeline(
+                new KeyFrame(Duration.seconds(0),
+                        new EventHandler<ActionEvent>()
+                        {
+                            @Override public void handle(ActionEvent actionEvent)
+                            {
+                                double t=currentTime();
+                                if(Math.abs(mmp.getCurrentX(t)-mmp.getDistance())<2);
+                            }
+                        }
+                ),
+      new KeyFrame(Duration.seconds(0.03))
+    );
+        timeline.setCycleCount((int) (mmp.getTime()/0.03/speed)+1);
+        timeline.play();
+    }
+    double currentTime()
+    {
+        currentTime=currentTime+speed*0.03;
+        return currentTime;
+    }
+    void animate(){
+        
+        dot.setCenterX(points.get(0).getX());
+        dot.setCenterY(500-points.get(0).getY());
+        dot.setRadius(size);
+        dot.setFill(black);
+        
+        
+        points.forEach(p2 -> {
+            pl.getPoints().addAll(p2.getX(), 500-p2.getY());
+            
+        });
+        
+        
+        plList.add(pl);
+        
+        
+        pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);           
+        
+        pt.interpolatorProperty().setValue(Interpolator.LINEAR);
+    }
+    
+    public void dataBaseSettings()
+    {
+        String query = "SELECT * From HitTheTarget";
+        try
+        {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet=statement.executeQuery(query);
+            initialHeight.setText(String.valueOf(resultSet.getDouble("Initial Height")));
+            angle.setText(String.valueOf(resultSet.getDouble("Angle")));
+            initialVelocity.setText(String.valueOf(resultSet.getDouble("Initial Velocity")));
+        }catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
     
     @FXML
     private void handleCloseApp(ActionEvent event) {
@@ -149,7 +338,6 @@ public class MainAppController {
     }
     
     //mutators
-
     public Polyline getPl() {
         return pl;
     }
@@ -214,11 +402,11 @@ public class MainAppController {
         MainAppController.points = points;
     }
 
-    public static Database getConnectionProvider() {
+    public static SQLiteDatabase getConnectionProvider() {
         return connectionProvider;
     }
 
-    public static void setConnectionProvider(Database connectionProvider) {
+    public static void setConnectionProvider(SQLiteDatabase connectionProvider) {
         MainAppController.connectionProvider = connectionProvider;
     }
 
@@ -279,11 +467,11 @@ public class MainAppController {
     }
 
     public Button getBtnPlay() {
-        return btnPlay;
+        return btnStart;
     }
 
     public void setBtnPlay(Button btnPlay) {
-        this.btnPlay = btnPlay;
+        this.btnStart = btnPlay;
     }
 
     public Button getBtnPause() {
@@ -333,6 +521,7 @@ public class MainAppController {
     public void setMnItemClose(MenuItem mnItemClose) {
         this.mnItemClose = mnItemClose;
     }
+<<<<<<< HEAD
     
     
     //Change background depending on gravity chosen
@@ -370,4 +559,6 @@ public class MainAppController {
     
     
     }
+=======
+>>>>>>> 69577594281de935a46c4be6e7ca550d6aa2e6f4
 }
