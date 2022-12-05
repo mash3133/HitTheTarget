@@ -78,6 +78,8 @@ public class MainAppController {
     public static final String MARS_LANDSCAPE = IMAGES_FOLDER + "mars landscape.jpg";
     public static final String EARTH_LANDSCAPE = IMAGES_FOLDER + "earth landscape.jpg";
     public static final String MOON_LANDSCAPE = IMAGES_FOLDER + "moon landscape.jpg";
+    
+    Double initialHeightEntered;
 
     
     //buttons
@@ -158,13 +160,15 @@ public class MainAppController {
     @FXML
     public void start(ActionEvent event){
         System.out.println("start button was pressed");
-        circle.setCenterX(0);
-        try{
-            circle.setCenterY((Double.parseDouble(getInitialHeight().getText()))* -1 - 30);
-        
-            if(Double.parseDouble(getInitialHeight().getText())<0 && (Double.parseDouble(getInitialHeight().getText()))>500){
+        initialHeightEntered = Double.parseDouble(getInitialHeight().getText());
+        System.out.println("this is what you entered: " + initialHeightEntered);
+        if(initialHeightEntered<= 0.0 && initialHeightEntered>=500.0){
+            System.out.println("im here 1");
             System.out.println("enter a positive value");
             }
+        try{
+        circle.setCenterX(0);
+            circle.setCenterY((initialHeightEntered)*-1 - 30);
         }
         catch(java.lang.NumberFormatException e){
             Stage stage = new Stage();
@@ -179,7 +183,7 @@ public class MainAppController {
         }
         catch(Exception e){
             System.out.println(e);
-}
+        }
     }
     
     //Change background depending on gravity chosen
