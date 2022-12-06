@@ -186,10 +186,8 @@ public class MainAppController {
         }
     }
     
-    //methods for projectile 
     
-    
-    //Works correctly, plays the animation
+    //Plays the animation
     @FXML
     public void startEventHandler(Event e)
     {
@@ -220,16 +218,19 @@ public class MainAppController {
         
     }
     
-    //Doesn't work for now
+    //Pauses animation
     @FXML
     public void pauseEventHandler(Event e) {
  
                timeline.pause();
                pt.pause();
+               btnStart.setDisable(false);
+        
+               
     }
     
     
-    //Works properly, resets the animation
+    //Resets animation 
     @FXML
     public void resetEventHandler(Event e){
         
