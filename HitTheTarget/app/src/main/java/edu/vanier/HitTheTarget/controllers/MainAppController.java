@@ -172,60 +172,7 @@ public class MainAppController {
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
@@ -268,11 +215,17 @@ public class MainAppController {
     @FXML
     public void handleTakeScreenshot(ActionEvent e1){
         
-        new File("/Documents/SavedScreenshotsProjectileMotion").mkdirs();
+        //new File("/Documents/SavedScreenshotsProjectileMotion").mkdirs();
         try {
             //Create folder where screenshots will be saved
             //Files.createDirectory(Paths.get("/Documents/SavedScreenshotsProjectileMotion/"));
   
+            File savedScreenshots = new File("/Desktop/SavedScreenshots");
+            boolean folderCreated = savedScreenshots.mkdirs();
+            
+            System.out.println(folderCreated);
+            
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         
