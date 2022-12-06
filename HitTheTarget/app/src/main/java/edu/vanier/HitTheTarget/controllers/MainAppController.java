@@ -222,11 +222,13 @@ public class MainAppController {
     @FXML
     public void pauseEventHandler(Event e) {
  
-               timeline.pause();
-               pt.pause();
-               btnStart.setDisable(false);
- 
+        btnStart.setDisable(false);     
+        timeline.pause();
+        pt.pause();
+        
+        
     }
+    
     
     
     //Resets animation 
