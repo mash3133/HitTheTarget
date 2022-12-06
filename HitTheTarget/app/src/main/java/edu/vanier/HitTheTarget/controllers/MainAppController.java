@@ -162,7 +162,8 @@ public class MainAppController {
         System.out.println("start button was pressed");
         initialHeightEntered = Double.parseDouble(getInitialHeight().getText());
         System.out.println("this is what you entered: " + initialHeightEntered);
-        if(initialHeightEntered<= 0.0 && initialHeightEntered>=500.0){
+        
+        if(initialHeightEntered < 0.0 && initialHeightEntered >= 500.0){
             System.out.println("im here 1");
             System.out.println("enter a positive value");
             }
