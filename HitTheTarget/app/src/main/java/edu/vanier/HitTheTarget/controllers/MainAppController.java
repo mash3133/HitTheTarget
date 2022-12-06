@@ -1,11 +1,7 @@
 package edu.vanier.HitTheTarget.controllers;
 
 import edu.vanier.HitTheTarget.math.MathMainApp;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
@@ -17,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -47,27 +42,18 @@ import javafx.util.Duration;
  * @author maesh
  */
 public class MainAppController {    
-    //variable 
+
+    
     private Polyline poly = new Polyline();
     private Circle dot = new Circle();
     private PathTransition pt;
-    
     private static MathMainApp mmp;
-    
     private static ArrayList<Polyline> plList = new ArrayList<Polyline>();
     private static Timeline timeline = new Timeline();
     private double currentTime = 0.0;
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
-    
-    //private static double marsGravity = 3.72;
-    //private static double earthGravity = 9.81;
-    //private static double moonGravity = 1.62;
-    
     private static double gravity = 9.8;
-    
-    
-    
     private static int size = 4;
     private static Color black = Color.BLACK;
     private static int speed = 1;
@@ -119,9 +105,6 @@ public class MainAppController {
     @FXML
     MenuItem mnItemClose;
     
-
-    @FXML
-    MenuItem mnItemScreenshot;
     
     @FXML
     private Text text = new Text();
@@ -132,14 +115,6 @@ public class MainAppController {
         text.setY(event.getY());
         text.setText("X = " + event.getX() + "        Y = " + event.getY());
     }
-    
-    
-
-    
-    
-    
-    
-    
     
 
     @FXML
@@ -210,31 +185,6 @@ public class MainAppController {
             
         }
     }
-    
-    //Take screenshots button
-    @FXML
-    public void handleTakeScreenshot(ActionEvent e1){
-        
-        //new File("/Documents/SavedScreenshotsProjectileMotion").mkdirs();
-        try {
-            //Create folder where screenshots will be saved
-            //Files.createDirectory(Paths.get("/Documents/SavedScreenshotsProjectileMotion/"));
-  
-            File savedScreenshots = new File("/Desktop/SavedScreenshots");
-            boolean folderCreated = savedScreenshots.mkdirs();
-            
-            System.out.println(folderCreated);
-            
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        
-        }
-    }
-    
-    
-   
-  
     
     //methods for projectile 
     
@@ -415,32 +365,6 @@ public class MainAppController {
     public static void setPoints(ArrayList<Point2D> points) {
         MainAppController.points = points;
     }
-/*
-    public static double getMarsGravity() {
-        return marsGravity;
-    }
-
-    public static void setMarsGravity(double marsGravity) {
-        MainAppController.marsGravity = marsGravity;
-    }
-
-    public static double getEarthGravity() {
-        return earthGravity;
-    }
-
-    public static void setEarthGravity(double earthGravity) {
-        MainAppController.earthGravity = earthGravity;
-    }
-
-    public static double getMoonGravity() {
-        return moonGravity;
-    }
-
-    public static void setMoonGravity(double moonGravity) {
-        MainAppController.moonGravity = moonGravity;
-    }
-    */
-
     
     public static int getSize() {
         return size;
