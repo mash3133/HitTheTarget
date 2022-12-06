@@ -74,6 +74,8 @@ public class MainAppController {
     Button btnPause = new Button();
     @FXML
     Button btnReplay = new Button();
+    @FXML
+    Button resumeBtn = new Button();
     
     @FXML
     ToggleGroup gravityOptions = new ToggleGroup();
@@ -222,14 +224,20 @@ public class MainAppController {
     @FXML
     public void pauseEventHandler(Event e) {
  
-        btnStart.setDisable(false);     
+        btnStart.setDisable(false);   
         timeline.pause();
         pt.pause();
-        
-        
+
     }
     
-    
+    //Resumes animation
+    @FXML
+    public void resumeEventHandler(Event e) {
+
+        timeline.play();
+        pt.play();
+
+    }
     
     //Resets animation 
     @FXML
