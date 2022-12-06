@@ -223,18 +223,9 @@ public class MainAppController {
     //Doesn't work for now
     @FXML
     public void pauseEventHandler(Event e) {
-           if(btnPause.isPressed())
-           {    
-              
+ 
                timeline.pause();
                pt.pause();
-           }
-           else
-           {
-               timeline.play();
-               pt.play();
-           }
-           
     }
     
     
