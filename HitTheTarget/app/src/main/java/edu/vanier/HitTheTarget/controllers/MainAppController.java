@@ -60,9 +60,14 @@ public class MainAppController {
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
     
-    private static double marsGravity = 3.72;
-    private static double earthGravity = 9.81;
-    private static double moonGravity = 1.62;
+    //private static double marsGravity = 3.72;
+    //private static double earthGravity = 9.81;
+    //private static double moonGravity = 1.62;
+    
+    private static double gravity = 9.8;
+    
+    
+    
     private static int size = 4;
     private static Color black = Color.BLACK;
     private static int speed = 1;
@@ -136,25 +141,7 @@ public class MainAppController {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    
     @FXML
     public void start(ActionEvent event){
         System.out.println("start button was pressed");
@@ -251,6 +238,8 @@ public class MainAppController {
             new BackgroundSize(1.0,1.0, true, true, false, false));
             
             pane.setBackground(new Background(marsImage));
+            gravity = 3.72;
+            
             
         } else if (earth.isSelected()){
 
@@ -260,6 +249,7 @@ public class MainAppController {
             new BackgroundSize(1.0,1.0, true, true, false, false));
             pane.setBackground(new Background(earthImage));
             pane.setStyle(EARTH_LANDSCAPE);
+            gravity = 9.81;
             
         } else if (moon.isSelected()){
 
@@ -269,6 +259,7 @@ public class MainAppController {
             BackgroundSize.DEFAULT);
             pane.setBackground(new Background(moonImage));
             pane.setStyle(MOON_LANDSCAPE);
+            gravity = 1.62;
             
         }
     }
@@ -326,9 +317,9 @@ public class MainAppController {
     //methods for projectile 
     public void startEventHandler(Event e)
     {
-        if(Double.parseDouble(getAngle().getText())>0 && Double.parseDouble(getInitialVelocity().getText())>0)
+        if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0)
         {
-            mmp = new MathMainApp(Double.parseDouble(getInitialHeight().getText()),Double.parseDouble(getAngle().getText()),Double.parseDouble(getInitialVelocity().getText()),earthGravity);
+            mmp = new MathMainApp(Double.parseDouble(initialHeight.getText()),Double.parseDouble(angle.getText()),Double.parseDouble(initialVelocity.getText()),gravity);
             points = mmp.getPoints();
             pt = new PathTransition(Duration.seconds(mmp.getTime()/speed), poly, dot);
             items.add(mmp);
@@ -352,15 +343,14 @@ public class MainAppController {
         
     }
     public void pauseEventHandler(Event e) {
-           if(btnPause.getText().equals("Pause"))
+           if(btnPause.isPressed())
            {    
-               btnPause.setText("Resume");
+              
                timeline.pause();
                pt.pause();
            }
            else
            {
-               btnPause.setText("Pause");
                timeline.play();
                pt.play();
            }
@@ -490,7 +480,7 @@ public class MainAppController {
     public static void setPoints(ArrayList<Point2D> points) {
         MainAppController.points = points;
     }
-
+/*
     public static double getMarsGravity() {
         return marsGravity;
     }
@@ -514,7 +504,9 @@ public class MainAppController {
     public static void setMoonGravity(double moonGravity) {
         MainAppController.moonGravity = moonGravity;
     }
+    */
 
+    
     public static int getSize() {
         return size;
     }

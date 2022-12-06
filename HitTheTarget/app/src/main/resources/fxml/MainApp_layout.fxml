@@ -25,9 +25,9 @@
             <children>
                 <Pane prefHeight="540.0" prefWidth="196.0">
                     <children>
-                        <Label layoutX="24.0" layoutY="85.0" text="Initial velocity" />
-                        <TextField fx:id="initalVelocity" layoutX="150.0" layoutY="81.0" prefHeight="25.0" prefWidth="53.0" />
-                        <Label layoutX="102.0" layoutY="165.0" text="Gravity" />
+                        <Label layoutX="24.0" layoutY="85.0" text="Initial velocity (m/s) :" />
+                        <TextField fx:id="initialVelocity" layoutX="150.0" layoutY="81.0" prefHeight="25.0" prefWidth="53.0" />
+                        <Label layoutX="79.0" layoutY="165.0" text="Gravity (m/s^2) :" />
                         <RadioButton fx:id="mars" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Mars">
                      <toggleGroup>
                         <ToggleGroup fx:id="gravityOptions" />
@@ -35,9 +35,9 @@
                   </RadioButton>
                         <RadioButton fx:id="earth" layoutX="97.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Earth" toggleGroup="$gravityOptions" />
                         <RadioButton fx:id="moon" layoutX="176.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Moon" toggleGroup="$gravityOptions" />
-                        <Label layoutX="25.0" layoutY="312.0" prefHeight="17.0" prefWidth="70.0" text="Initial height" />
+                        <Label layoutX="17.0" layoutY="312.0" prefHeight="17.0" prefWidth="97.0" text="Initial height (m) :" />
                         <TextField fx:id="initialHeight" layoutX="121.0" layoutY="308.0" prefHeight="25.0" prefWidth="85.0" />
-                        <Label layoutX="37.0" layoutY="382.0" text="Angle" />
+                        <Label layoutX="37.0" layoutY="382.0" text="Angle (°) : " />
                         <TextField fx:id="angle" layoutX="121.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
                     </children>
                 </Pane>
