@@ -280,39 +280,8 @@ public class MainAppController {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
+  
     
     //methods for projectile 
     public void startEventHandler(Event e)
