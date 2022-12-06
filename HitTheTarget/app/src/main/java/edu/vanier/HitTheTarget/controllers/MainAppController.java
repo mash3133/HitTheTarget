@@ -54,8 +54,8 @@ public class MainAppController {
     
     private static MathMainApp mmp;
     
-    private static ArrayList<Polyline> plList;
-    private static Timeline timeline;
+    private static ArrayList<Polyline> plList = new ArrayList<Polyline>();
+    private static Timeline timeline = new Timeline();
     private double currentTime = 0.0;
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
@@ -284,6 +284,10 @@ public class MainAppController {
   
     
     //methods for projectile 
+    
+    
+    //Works correctly, plays the animation
+    @FXML
     public void startEventHandler(Event e)
     {
         if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0)
@@ -310,7 +314,11 @@ public class MainAppController {
         }
             
         
+        
     }
+    
+    //Doesn't work for now
+    @FXML
     public void pauseEventHandler(Event e) {
            if(btnPause.isPressed())
            {    
@@ -323,8 +331,12 @@ public class MainAppController {
                timeline.play();
                pt.play();
            }
+           
     }
     
+    
+    //Works properly, resets the animation
+    @FXML
     public void resetEventHandler(Event e){
         
         pane.getChildren().clear();
@@ -333,6 +345,7 @@ public class MainAppController {
         pt.stop();
         poly.getPoints().clear();
         btnStart.setDisable(false);
+        
     }
     
     public void time(){
