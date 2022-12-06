@@ -525,8 +525,4 @@ public class MainAppController {
     public void setMnItemClose(MenuItem mnItemClose) {
         this.mnItemClose = mnItemClose;
     }
- 
-    
-    
-
 }

@@ -164,8 +164,8 @@ public class GUI extends GridPane{
         ThemeM.getItems().addAll(blueColorBall,redColorBall,blueBorder,redBorder);
         helpMenu.getItems().addAll(helpItem);
         mb.getMenus().addAll(settingsMenu,helpMenu);
-        text = "-- Information\nThe goal of the animation is to create a projectile path according to the user's input values\nhelping "       
-                + "the user to visualize the projectile path motion in 2D.\n\n-- How to use the animation\n1. Input all values in the text "
+        text = "The goal of the animation is to create a projectile path according to the user's input values\nhelping "       
+                + "the user to visualize the projectile path motion in 2D.\n\n--"
                 + "boxes below or go to settings for default values\n2. Press the \"Start\" button after having the values in the text "
                 + "boxes\n3. Press the \"Pause\" button to pause the projectile path\n4. Press the \"Resume\" button to continue the projectile "
                 + "path\n5. Press the \"Reset\" button to clear the projectile path \n\nPlease note: Press the reset button before attempting a "
@@ -177,7 +177,6 @@ public class GUI extends GridPane{
         f4.promptTextProperty().setValue("Initial Velocity");
         f5.promptTextProperty().setValue("Mass");
         
-        //set button size
         int bX, bY;
         bX = 75;
         bY = 25;
@@ -198,7 +197,6 @@ public class GUI extends GridPane{
         list.setMinSize(715, 300);
         vb22.setAlignment(Pos.TOP_CENTER);
         
-//      
         TableColumn<ProjectileMath,Double>h=new TableColumn<>("Initial Height(m)");
         h.setCellValueFactory(new PropertyValueFactory<>("y0"));
         
@@ -246,8 +244,6 @@ public class GUI extends GridPane{
         b2.setOnAction(e-> controller.pauseEventHandler(e));
         
         b3.setOnAction(e-> controller.resetEventHandler(e));
-        
-        //Menu actions
         
         defaultSettings.setOnAction(e -> controller.defaultSettings());
         dataBaseSettings.setOnAction(e -> controller.dataBaseSettings());
