@@ -89,9 +89,7 @@ public class MainAppController {
     
     @FXML
     Pane pane = new Pane();
-    
-    @FXML
-    Circle circle = new Circle();
+   
     private double x;
     private double y;
     
@@ -130,8 +128,8 @@ public class MainAppController {
             System.out.println("enter a positive value");
             }
         try{
-        circle.setCenterX(0);
-            circle.setCenterY((initialHeightEntered)*-1 - 30);
+        //circle.setCenterX(0);
+           // circle.setCenterY((initialHeightEntered)*-1 - 30);
         }
         catch(java.lang.NumberFormatException e){
             Stage stage = new Stage();
