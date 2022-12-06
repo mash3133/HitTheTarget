@@ -1,7 +1,6 @@
 package edu.vanier.HitTheTarget.ui;
 
 import edu.vanier.HitTheTarget.controllers.MainAppController;
-import edu.vanier.HitTheTarget.controllers.MainMenuController;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,11 +26,11 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(
-        getClass().getResource("/fxml/MenuWindow.fxml"));
+        getClass().getResource("/fxml/MainApp_layout.fxml"));
         
-        loader.setController(new MainMenuController());
+        loader.setController(new MainAppController());
         Pane root = loader.load();
-        
+        stage.setFullScreen(true);
         Scene scene = new Scene(root, 600, 600);
         stage.setScene(scene);
         stage.setTitle("Hit The Target");

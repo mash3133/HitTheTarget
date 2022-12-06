@@ -1,4 +1,4 @@
-package edu.vanier.HitTheTarget.controllers;
+/*package edu.vanier.HitTheTarget.controllers;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -10,7 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainMenuController {
@@ -21,7 +23,6 @@ public class MainMenuController {
     @FXML
     public void initialize() {
         System.out.println("Initializing play button...");
-        //mnItemClose.setOnAction(this::closeApplication);
         btnPlay.setOnAction((event) -> {
             try {
                 startMainWindow(event);
@@ -30,16 +31,16 @@ public class MainMenuController {
             }
         });
     }
-
+    
     @FXML
     public void startMainWindow(ActionEvent event) throws IOException {
         FXMLLoader mainWindow = new FXMLLoader(
                 getClass().getResource("/fxml/MainApp_layout.fxml"));
 
         mainWindow.setController(new MainAppController());
-
+        
         Pane root = mainWindow.load();
-
+        
         Scene scene = new Scene(root, 600, 600);
         Stage stage2 = new Stage();
 
@@ -48,4 +49,11 @@ public class MainMenuController {
         stage2.setMaximized(true);
         stage2.show();
     }
-}
+    
+    public void updateMousePosition(MouseEvent e, Text txtPosition) {
+        txtPosition.setX(e.getX());
+        txtPosition.setY(e.getY());
+        txtPosition.setText("(" + e.getX() + ", " + e.getY() + ")");
+        txtPosition.setVisible(true);
+    }
+}*/

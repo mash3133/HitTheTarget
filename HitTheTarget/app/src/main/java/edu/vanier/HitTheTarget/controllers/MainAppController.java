@@ -1,18 +1,11 @@
 package edu.vanier.HitTheTarget.controllers;
 
-import edu.vanier.hitthetarget.database.SQLiteDatabase;
 import edu.vanier.HitTheTarget.math.MathMainApp;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
@@ -24,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -33,6 +27,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -43,6 +38,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polyline;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -52,19 +48,18 @@ import javafx.util.Duration;
  */
 public class MainAppController {    
     //variable 
-    private Polyline pl = new Polyline();
+    private Polyline poly = new Polyline();
     private Circle dot = new Circle();
     private PathTransition pt;
     
     private static MathMainApp mmp;
+    
     private static ArrayList<Polyline> plList;
     private static Timeline timeline;
     private double currentTime = 0.0;
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
     
-    private static SQLiteDatabase connectionProvider = new SQLiteDatabase();
-    private static Connection connection = connectionProvider.getConnection();
     private static double marsGravity = 3.72;
     private static double earthGravity = 9.81;
     private static double moonGravity = 1.62;
@@ -74,7 +69,6 @@ public class MainAppController {
     
     private static final String RESOURCES_FOLDER = "";
     private static final String IMAGES_FOLDER = RESOURCES_FOLDER + "Images/";
-    
     public static final String MARS_LANDSCAPE = IMAGES_FOLDER + "mars landscape.jpg";
     public static final String EARTH_LANDSCAPE = IMAGES_FOLDER + "earth landscape.jpg";
     public static final String MOON_LANDSCAPE = IMAGES_FOLDER + "moon landscape.jpg";
@@ -124,38 +118,42 @@ public class MainAppController {
     @FXML
     MenuItem mnItemScreenshot;
     
-    //methods
-
-    //methods for hit the target
-    //position circle
-
     @FXML
-    public void initialize() {
-        System.out.println("Initializing start button...");
-        btnStart.setOnAction((event) -> {
-            start(event);
-        }
-        );
+    private Text text = new Text();
+    
+    @FXML
+    public void displayPosition(MouseEvent event){
+        text.setX(event.getX());
+        text.setY(event.getY());
+        text.setText("X = " + event.getX() + "        Y = " + event.getY());
     }
     
-    //Take screenshots button
-    @FXML
-    public void handleTakeScreenshot(ActionEvent e1){
-        
-        new File("/Documents/SavedScreenshotsProjectileMotion").mkdirs();
-        try {
-            
-            //Create folder where screenshots will be saved
-            //Files.createDirectory(Paths.get("/Documents/SavedScreenshotsProjectileMotion/"));
-            
-            
-            
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        
-        }
-    }
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
     
     @FXML
     public void start(ActionEvent event){
@@ -186,6 +184,61 @@ public class MainAppController {
             System.out.println(e);
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
@@ -219,7 +272,54 @@ public class MainAppController {
             
         }
     }
+    
     //Take screenshots button
+    @FXML
+    public void handleTakeScreenshot(ActionEvent e1){
+        
+        new File("/Documents/SavedScreenshotsProjectileMotion").mkdirs();
+        try {
+            //Create folder where screenshots will be saved
+            //Files.createDirectory(Paths.get("/Documents/SavedScreenshotsProjectileMotion/"));
+  
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -230,11 +330,11 @@ public class MainAppController {
         {
             mmp = new MathMainApp(Double.parseDouble(getInitialHeight().getText()),Double.parseDouble(getAngle().getText()),Double.parseDouble(getInitialVelocity().getText()),earthGravity);
             points = mmp.getPoints();
-            pt = new PathTransition(Duration.seconds(mmp.getTime()/speed), pl, dot);
+            pt = new PathTransition(Duration.seconds(mmp.getTime()/speed), poly, dot);
             items.add(mmp);
             animate();
             time();
-            pane.getChildren().addAll(pl,dot);
+            pane.getChildren().addAll(poly,dot);
             pt.play();
             btnStart.setDisable(true);
         
@@ -272,11 +372,11 @@ public class MainAppController {
         currentTime=0.0;
         timeline.stop();
         pt.stop();
-        pl.getPoints().clear();
+        poly.getPoints().clear();
         btnStart.setDisable(false);
     }
     
-    void time(){
+    public void time(){
         timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0),
                         new EventHandler<ActionEvent>()
@@ -298,7 +398,8 @@ public class MainAppController {
         currentTime=currentTime+speed*0.03;
         return currentTime;
     }
-    void animate(){
+    
+    public void animate(){
         
         dot.setCenterX(points.get(0).getX());
         dot.setCenterY(500-points.get(0).getY());
@@ -307,33 +408,17 @@ public class MainAppController {
         
         
         points.forEach(p2 -> {
-            pl.getPoints().addAll(p2.getX(), 500-p2.getY());
+            poly.getPoints().addAll(p2.getX(), 500-p2.getY());
             
         });
         
         
-        plList.add(pl);
+        plList.add(poly);
         
         
         pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);           
         
         pt.interpolatorProperty().setValue(Interpolator.LINEAR);
-    }
-    
-    public void dataBaseSettings()
-    {
-        String query = "SELECT * From HitTheTarget";
-        try
-        {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet=statement.executeQuery(query);
-            initialHeight.setText(String.valueOf(resultSet.getDouble("Initial Height")));
-            angle.setText(String.valueOf(resultSet.getDouble("Angle")));
-            initialVelocity.setText(String.valueOf(resultSet.getDouble("Initial Velocity")));
-        }catch(SQLException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
     }
     
     @FXML
@@ -343,11 +428,11 @@ public class MainAppController {
     
     //mutators
     public Polyline getPl() {
-        return pl;
+        return poly;
     }
 
     public void setPl(Polyline pl) {
-        this.pl = pl;
+        this.poly = pl;
     }
 
     public Circle getDot() {
@@ -404,22 +489,6 @@ public class MainAppController {
 
     public static void setPoints(ArrayList<Point2D> points) {
         MainAppController.points = points;
-    }
-
-    public static SQLiteDatabase getConnectionProvider() {
-        return connectionProvider;
-    }
-
-    public static void setConnectionProvider(SQLiteDatabase connectionProvider) {
-        MainAppController.connectionProvider = connectionProvider;
-    }
-
-    public static Connection getConnection() {
-        return connection;
-    }
-
-    public static void setConnection(Connection connection) {
-        MainAppController.connection = connection;
     }
 
     public static double getMarsGravity() {
