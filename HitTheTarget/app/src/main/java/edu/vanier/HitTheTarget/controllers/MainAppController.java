@@ -225,8 +225,7 @@ public class MainAppController {
                timeline.pause();
                pt.pause();
                btnStart.setDisable(false);
-        
-               
+ 
     }
     
     
