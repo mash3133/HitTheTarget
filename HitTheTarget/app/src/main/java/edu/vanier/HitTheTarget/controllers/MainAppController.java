@@ -56,7 +56,7 @@ public class MainAppController {
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
     private static double gravity = 9.8;
-    private static int size = 4;
+    private static int size = 5;
     private static Color color = Color.BLACK;
     private static int speed = 1;
     
