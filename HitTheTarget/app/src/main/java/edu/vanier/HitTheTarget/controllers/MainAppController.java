@@ -64,9 +64,6 @@ public class MainAppController {
     public static final String EARTH_LANDSCAPE = IMAGES_FOLDER + "earth landscape.jpg";
     public static final String MOON_LANDSCAPE = IMAGES_FOLDER + "moon landscape.jpg";
     
-    Double initialHeightEntered;
-
-    
     //buttons
     @FXML
     Button btnStart = new Button();
@@ -154,7 +151,6 @@ public class MainAppController {
         }
     }
     
-    
     //Plays the animation
     @FXML
     public void startEventHandler(Event e)
@@ -181,9 +177,6 @@ public class MainAppController {
             stage.setTitle("Error");
             stage.show();
         }
-            
-        
-        
     }
     
     //Pauses animation
@@ -193,7 +186,6 @@ public class MainAppController {
         btnStart.setDisable(false);   
         timeline.pause();
         pt.pause();
-
     }
     
     //Resumes animation
@@ -202,20 +194,17 @@ public class MainAppController {
 
         timeline.play();
         pt.play();
-
     }
     
     //Resets animation 
     @FXML
     public void resetEventHandler(Event e){
-        
         pane.getChildren().clear();
         currentTime=0.0;
         timeline.stop();
         pt.stop();
         poly.getPoints().clear();
         btnStart.setDisable(false);
-        
     }
     
     public void time(){
@@ -235,8 +224,8 @@ public class MainAppController {
         timeline.setCycleCount((int) (mmp.getTime()/0.03/speed)+1);
         timeline.play();
     }
-    double currentTime()
-    {
+    
+    double currentTime(){
         currentTime=currentTime+speed*0.03;
         return currentTime;
     }
@@ -251,15 +240,11 @@ public class MainAppController {
         
         points.forEach(p2 -> {
             poly.getPoints().addAll(p2.getX(), 780-p2.getY());
-            
         });
-        
         
         plList.add(poly);
         
-        
-        pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);           
-        
+        pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);  
         pt.interpolatorProperty().setValue(Interpolator.LINEAR);
     }
     
