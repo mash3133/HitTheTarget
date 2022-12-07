@@ -25,7 +25,7 @@
                 <Pane prefHeight="540.0" prefWidth="196.0">
                     <children>
                         <Label layoutX="24.0" layoutY="85.0" text="Initial velocity (m/s) :" />
-                        <TextField fx:id="initialVelocity" layoutX="150.0" layoutY="81.0" prefHeight="25.0" prefWidth="53.0" />
+                        <TextField fx:id="initialVelocity" layoutX="138.0" layoutY="81.0" prefHeight="25.0" prefWidth="59.0" />
                         <Label layoutX="79.0" layoutY="165.0" text="Gravity (m/s^2) :" />
                         <RadioButton fx:id="mars" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Mars">
                      <toggleGroup>
