@@ -117,38 +117,6 @@ public class MainAppController {
     }
     
 
-    @FXML
-    public void start(ActionEvent event){
-        System.out.println("start button was pressed");
-        initialHeightEntered = Double.parseDouble(getInitialHeight().getText());
-        System.out.println("this is what you entered: " + initialHeightEntered);
-        
-        if(initialHeightEntered < 0.0 && initialHeightEntered >= 500.0){
-            System.out.println("im here 1");
-            System.out.println("enter a positive value");
-            }
-        try{
-        //circle.setCenterX(0);
-           // circle.setCenterY((initialHeightEntered)*-1 - 30);
-        }
-        catch(java.lang.NumberFormatException e){
-            Stage stage = new Stage();
-            this.pane = new GridPane();
-            Label lbl = new Label();
-            
-            this.pane.getChildren().add(new Label("Please enter positive value"));
-            Scene scene = new Scene(pane, 510, 285);
-            stage.setScene(scene);
-            stage.setTitle("Error");
-            stage.show();
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }
-    
-
-    
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
         
