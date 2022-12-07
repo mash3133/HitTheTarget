@@ -15,6 +15,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -95,6 +96,8 @@ public class MainAppController {
     //toolbar
     @FXML
     MenuItem mnItemClose;
+    @FXML
+    MenuItem mnItemAbout;
     @FXML
     private Text text = new Text();
     
@@ -243,6 +246,28 @@ public class MainAppController {
     @FXML
     private void handleCloseApp(ActionEvent event) {
         Platform.exit();
+    }
+    
+    @FXML
+    public void aboutBtnEventHandler(ActionEvent event){
+        Alert info = new Alert(Alert.AlertType.INFORMATION);
+        info.setTitle("Important information");
+        info.setContentText("""
+                            
+                            The goal of the animation is to recreate a projectile's path according to the user's input values
+                            with the purpose of helping the user visualize the motion of a projectile in 2D.
+                            
+                            -- How to use the animation
+                            1. Input all values in the text boxes on the right
+                            2. Press the "Start" button after having the values in the text boxes
+                            3. Press the "Pause" button to pause the projectile path
+                            4. Press the "Resume" button to continue the projectile path
+                            5. Press the "Replay" button to clear the projectile path 
+                            
+                            
+                            
+                            """);
+        info.show();
     }
     
     //mutators
