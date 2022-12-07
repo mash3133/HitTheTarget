@@ -104,7 +104,7 @@ public class MainAppController {
     @FXML
     MenuItem changeBallYellow;
     @FXML
-    MenuItem changeBallPurple;
+    MenuItem changeBallCyan;
     
 
     @FXML
@@ -309,8 +309,8 @@ public class MainAppController {
         dot.setFill(color = Color.YELLOW);
     }
     
-    public void handlePurpleColor(){
-        dot.setFill(color = Color.PURPLE);
+    public void handleCyanColor(){
+        dot.setFill(color = Color.CYAN);
     }
     
     
