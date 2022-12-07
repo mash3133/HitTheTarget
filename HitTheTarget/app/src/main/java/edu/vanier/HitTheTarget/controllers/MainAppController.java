@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -55,8 +56,8 @@ public class MainAppController {
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
     private static double gravity = 9.8;
-    private static int size = 4;
-    private static Color black = Color.BLACK;
+    private static int size = 5;
+    private static Color color = Color.BLACK;
     private static int speed = 1;
     
     private static final String RESOURCES_FOLDER = "";
@@ -108,7 +109,29 @@ public class MainAppController {
                     
                     ));
     }
+    @FXML
+    MenuItem changeBallBlue;
+    @FXML
+    MenuItem changeBallRed;
+    @FXML
+    MenuItem changeBallYellow;
+    @FXML
+    MenuItem changeBallCyan;
     
+
+    @FXML
+    MenuItem mnItemAbout;
+    @FXML
+    private Text text = new Text();
+    
+    //methods
+    @FXML
+    public void displayPosition(MouseEvent event){
+        text.setX(event.getX());
+        text.setY(event.getY());
+        text.setText("X = " + event.getX() + "        Y = " + event.getY());
+    }
+
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
         
@@ -117,8 +140,7 @@ public class MainAppController {
             BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
-            new BackgroundSize(1.0,1.0, true, true, false, false));
-            
+            new BackgroundSize(1.0,1.0, true, true, false, false));           
             pane.setBackground(new Background(marsImage));
             gravity = 3.72;
             
@@ -243,7 +265,7 @@ public class MainAppController {
         dot.setCenterX(points.get(0).getX());
         dot.setCenterY(100-points.get(0).getY());
         dot.setRadius(size);
-        dot.setFill(black);
+        dot.setFill(color);
         points.forEach(p2 -> {
             poly.getPoints().addAll(p2.getX(), 780-p2.getY());
         });
@@ -256,6 +278,54 @@ public class MainAppController {
     private void handleCloseApp(ActionEvent event) {
         Platform.exit();
     }
+    
+    @FXML
+    public void aboutBtnEventHandler(ActionEvent event){
+        Alert info = new Alert(Alert.AlertType.INFORMATION);
+        info.setTitle("Important information");
+        info.setContentText("""
+                            
+                            The goal of the animation is to recreate a projectile's path according to the user's input values
+                            with the purpose of helping the user visualize the motion of a projectile in 2D.
+                            
+                            -- How to use the animation
+                            1. Input all values in the text boxes on the right
+                            2. Select one value for the gravity
+                            3. Press the "Start" button after having the values in the text boxes
+                            4. Press the "Pause" button to pause the projectile path
+                            5. Press the "Resume" button to continue the projectile path
+                            6. Press the "Replay" button to clear the projectile path 
+                            
+                            Note: The default color of the projectile is black. It can be changed in settings
+
+                                                      
+           
+                            
+                                                                      
+                            """);
+        info.show();
+        info.setResizable(true);
+    }
+    
+    //Change the color of the ball methods
+    public void handleBlueColor(){
+        dot.setFill(color = Color.BLUE);
+    }
+    
+    public void handleRedColor(){
+        dot.setFill(color = Color.RED);
+    }
+    
+    public void handleYellowColor(){
+        dot.setFill(color = Color.YELLOW);
+    }
+    
+    public void handleCyanColor(){
+        dot.setFill(color = Color.CYAN);
+    }
+    
+    
+     
     
     //mutators
     public Polyline getPl() {
@@ -330,12 +400,12 @@ public class MainAppController {
         MainAppController.size = size;
     }
 
-    public static Color getBlack() {
-        return black;
+    public static Color getColor() {
+        return color;
     }
 
     public static void setBlack(Color black) {
-        MainAppController.black = black;
+        MainAppController.color = black;
     }
 
     public static int getSpeed() {

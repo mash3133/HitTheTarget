@@ -93,12 +93,20 @@
         <menus>
           <Menu mnemonicParsing="false" text="Options">
             <items>
-                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close" />
+                  <Menu mnemonicParsing="false" text="Change ball's color">
+                    <items>
+                        <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Yellow" />
+                        <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Red" />
+                        <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Blue" />
+                        <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Cyan" />
+                    </items>
+                  </Menu>
+                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="mnItemAbout" mnemonicParsing="false" onAction="#aboutBtnEventHandler" text="About" />
             </items>
           </Menu>
         </menus>
