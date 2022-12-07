@@ -14,6 +14,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -96,6 +97,7 @@ public class MainAppController {
     //toolbar
     @FXML
     MenuItem mnItemClose;
+<<<<<<< HEAD
     @FXML
     MenuItem mnItemAbout;
     @FXML
@@ -108,6 +110,8 @@ public class MainAppController {
         text.setY(event.getY());
         text.setText("X = " + event.getX() + "        Y = " + event.getY());
     }
+=======
+>>>>>>> 7ab62a9c90152be9cc28ca44b9d4b15e46ca632c
 
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
@@ -150,8 +154,7 @@ public class MainAppController {
     @FXML
     public void startEventHandler(Event e)
     {
-        if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0)
-        {
+        if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0){
             mmp = new MathMainApp(Double.parseDouble(initialHeight.getText()),Double.parseDouble(angle.getText()),Double.parseDouble(initialVelocity.getText()),gravity);
             points = mmp.getPoints();
             pt = new PathTransition(Duration.seconds(mmp.getTime()/speed), poly, dot);
@@ -161,13 +164,33 @@ public class MainAppController {
             pane.getChildren().addAll(poly,dot);
             pt.play();
             btnStart.setDisable(true);
+        }   
         
-        }   else{
+        if(Double.parseDouble(initialVelocity.getText())<=0){
             Stage stage = new Stage();
             this.pane = new GridPane();
+            Label lb = new Label();
+            lb.setText("Please enter a positive velocity");
+            lb.setAlignment(Pos.CENTER);
             
-            this.pane.getChildren().add(new Label("Please enter positive value"));
-            Scene scene = new Scene(pane, 510, 285);
+            this.pane.getChildren().add(lb);
+            
+            Scene scene = new Scene(pane, 300, 300);
+            stage.setScene(scene);
+            stage.setTitle("Error");
+            stage.show();
+        }
+        
+        if(Double.parseDouble(angle.getText())<=0){
+            Stage stage = new Stage();
+            this.pane = new GridPane();
+            Label lb = new Label();
+            lb.setText("Please enter a positive angle");
+            lb.setAlignment(Pos.CENTER);
+            
+            this.pane.getChildren().add(lb);
+            
+            Scene scene = new Scene(pane, 300, 300);
             stage.setScene(scene);
             stage.setTitle("Error");
             stage.show();
@@ -177,7 +200,6 @@ public class MainAppController {
     //Pauses animation
     @FXML
     public void pauseEventHandler(Event e) {
- 
         btnStart.setDisable(false);   
         timeline.pause();
         pt.pause();
@@ -186,7 +208,6 @@ public class MainAppController {
     //Resumes animation
     @FXML
     public void resumeEventHandler(Event e) {
-
         timeline.play();
         pt.play();
     }
@@ -195,27 +216,24 @@ public class MainAppController {
     @FXML
     public void resetEventHandler(Event e){
         pane.getChildren().clear();
-        currentTime=0.0;
+        currentTime = 0.0;
         timeline.stop();
         pt.stop();
         poly.getPoints().clear();
         btnStart.setDisable(false);
     }
     
+    //animation
     public void time(){
-        timeline = new Timeline(
-                new KeyFrame(Duration.seconds(0),
-                        new EventHandler<ActionEvent>()
-                        {
-                            @Override public void handle(ActionEvent actionEvent)
-                            {
-                                double t=currentTime();
-                                if(Math.abs(mmp.getCurrentX(t)-mmp.getDistance())<2);
-                            }
-                        }
-                ),
+        timeline = new Timeline(new KeyFrame(Duration.seconds(0), new EventHandler<ActionEvent>(){
+            @Override public void handle(ActionEvent actionEvent){
+                double t = currentTime();
+                if(Math.abs(mmp.getCurrentX(t)-mmp.getDistance())<2);
+            }
+        }
+        ),
       new KeyFrame(Duration.seconds(0.03))
-    );
+        );
         timeline.setCycleCount((int) (mmp.getTime()/0.03/speed)+1);
         timeline.play();
     }
@@ -226,19 +244,14 @@ public class MainAppController {
     }
     
     public void animate(){
-        
         dot.setCenterX(points.get(0).getX());
         dot.setCenterY(100-points.get(0).getY());
         dot.setRadius(size);
         dot.setFill(black);
-        
-        
         points.forEach(p2 -> {
             poly.getPoints().addAll(p2.getX(), 780-p2.getY());
         });
-        
         plList.add(poly);
-        
         pt.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);  
         pt.interpolatorProperty().setValue(Interpolator.LINEAR);
     }
