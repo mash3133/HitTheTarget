@@ -43,7 +43,7 @@ import javafx.util.Duration;
  */
 public class MainAppController {    
 
-    
+    //variables
     private Polyline poly = new Polyline();
     private Circle dot = new Circle();
     private PathTransition pt;
@@ -73,22 +73,16 @@ public class MainAppController {
     Button btnReplay = new Button();
     @FXML
     Button resumeBtn = new Button();
-    
     @FXML
     ToggleGroup gravityOptions = new ToggleGroup();
-    
     @FXML
     RadioButton mars = new RadioButton();
     @FXML
     RadioButton earth = new RadioButton();
     @FXML
     RadioButton moon = new RadioButton();
-    
     @FXML
     Pane pane = new Pane();
-   
-    private double x;
-    private double y;
     
     //textfield
     @FXML
@@ -101,18 +95,16 @@ public class MainAppController {
     //toolbar
     @FXML
     MenuItem mnItemClose;
-    
-    
     @FXML
     private Text text = new Text();
     
+    //methods
     @FXML
     public void displayPosition(MouseEvent event){
         text.setX(event.getX());
         text.setY(event.getY());
         text.setText("X = " + event.getX() + "        Y = " + event.getY());
     }
-    
 
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){

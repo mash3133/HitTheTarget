@@ -12,12 +12,12 @@ import javafx.geometry.Point2D;
  * @author maesh
  */
 public class MathMainApp {
-    
-    
+    //variables
     private double x,y,vx,vy,ax,ay,speed,time,angle,y0,vx0,vy0,distance;
-    private final double dTime=0.001;
+    private final double dTime = 0.001;
     private ArrayList<Point2D> points;
     
+    //methods
     public MathMainApp(double y, double angle, double speed, double gravity) 
     {
         this.y0 = y;
@@ -46,7 +46,22 @@ public class MathMainApp {
         return value;
     }
     
-
+    public ArrayList getPoints()
+    {
+        double currentTime = 0.0;
+        while (currentTime < this.time)
+            {
+            currentTime += this.dTime;
+            this.x += this.vx*this.dTime;
+            this.y += this.vy*this.dTime;
+            this.points.add(new Point2D(this.x, this.y));
+            this.vx += this.ax*this.dTime;
+            this.vy -= this.ay*this.dTime;
+            }
+        return this.points;
+    }
+    
+    //mutators
     public double getX() {
         return x;
     }
@@ -150,31 +165,16 @@ public class MathMainApp {
     public void setDistance(double distance) {
         this.distance = distance;
     }
-    public ArrayList getPoints()
-    {
-        double currentTime = 0.0;
-        while (currentTime < this.time)
-            {
-            currentTime += this.dTime;
-            this.x += this.vx*this.dTime;
-            this.y += this.vy*this.dTime;
-            this.points.add(new Point2D(this.x, this.y));
-            this.vx += this.ax*this.dTime;
-            this.vy -= this.ay*this.dTime;
-            }
-        return this.points;
-    }
     
-    public double getCurrentX(double t)
-    {   
+    public double getCurrentX(double t){   
         return SF(this.vx0*t,3);
     }
-    public double getCurrentY(double t)
-    {   
+    
+    public double getCurrentY(double t){   
         return SF(this.y0+(this.vy0*t-0.5*this.ay*t*t),3);
     }
     
-     public double getCurrentV(double t){   
+    public double getCurrentV(double t){   
         return SF(Math.pow(Math.pow(this.vx0, 2)+Math.pow(this.vy0-this.ay*t, 2), 0.5),3);
     }
 }
