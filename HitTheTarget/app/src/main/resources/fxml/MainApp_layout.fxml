@@ -94,7 +94,11 @@
         <menus>
           <Menu mnemonicParsing="false" text="Options">
             <items>
-                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close" />
+                  <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Change ball color to blue" />
+                  <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Change ball color to red" />
+                  <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Change ball color to yellow" />
+                  <MenuItem fx:id="changeBallPurple" mnemonicParsing="false" onAction="#handlePurpleColor" text="Change ball color to purple" />
+                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
