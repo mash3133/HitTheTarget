@@ -94,10 +94,14 @@
         <menus>
           <Menu mnemonicParsing="false" text="Options">
             <items>
-                  <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Change ball color to blue" />
-                  <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Change ball color to red" />
-                  <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Change ball color to yellow" />
-                  <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Change ball color to cyan" />
+                  <Menu mnemonicParsing="false" text="Change ball's color">
+                    <items>
+                        <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Yellow" />
+                        <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Red" />
+                        <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Blue" />
+                        <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Cyan" />
+                    </items>
+                  </Menu>
                   <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
             </items>
           </Menu>
