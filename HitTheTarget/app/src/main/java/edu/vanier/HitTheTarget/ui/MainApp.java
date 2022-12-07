@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -32,7 +33,6 @@ public class MainApp extends Application {
         Pane root = loader.load();
         Scene scene = new Scene(root, 600, 600);
         stage.setFullScreen(true);
-        stage.initStyle(StageStyle.DECORATED);
         stage.setScene(scene);
         stage.setTitle("Hit The Target");
         stage.show();

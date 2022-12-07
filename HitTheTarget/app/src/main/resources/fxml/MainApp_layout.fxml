@@ -23,7 +23,7 @@
             <children>
                 <Pane onMouseMoved="#mouseEventHandler" prefHeight="540.0" prefWidth="196.0">
                     <children>
-                        <Label layoutX="24.0" layoutY="85.0" text="Initial velocity (m/s) :" />
+                        <Label layoutX="21.0" layoutY="85.0" prefHeight="17.0" prefWidth="117.0" text="Initial velocity (m/s) :" />
                         <TextField fx:id="initialVelocity" layoutX="138.0" layoutY="81.0" prefHeight="25.0" prefWidth="59.0" />
                         <Label layoutX="79.0" layoutY="165.0" text="Gravity (m/s^2) :" />
                         <RadioButton fx:id="mars" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Mars">
@@ -46,7 +46,11 @@
       <Pane fx:id="pane" onMouseMoved="#mouseEventHandler" prefHeight="504.0" prefWidth="510.0" style="-fx-border-color: black;">
          <children>
             <AnchorPane layoutX="-1.0" layoutY="530.0" />
-            <Label fx:id="mousePtLabel" layoutX="138.0" layoutY="6.0" prefHeight="17.0" prefWidth="253.0" />
+            <HBox layoutX="-1.0" prefHeight="26.0" prefWidth="511.0">
+               <children>
+                  <Label fx:id="mousePtLabel" prefHeight="29.0" prefWidth="511.0" />
+               </children>
+            </HBox>
          </children>
       </Pane>
    </center>

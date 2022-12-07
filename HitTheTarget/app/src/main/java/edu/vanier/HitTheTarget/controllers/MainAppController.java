@@ -100,15 +100,6 @@ public class MainAppController {
     
     @FXML
     Label mousePtLabel = new Label();
-    
-    
-//methods
-    public void mouseEventHandler(MouseEvent event){
-        mousePtLabel.setTextFill(Color.BLACK);
-            mousePtLabel.setText("X = " + (event.getX()-0.8) + "     Y = " + (event.getY()
-                    
-                    ));
-    }
     @FXML
     MenuItem changeBallBlue;
     @FXML
@@ -117,52 +108,49 @@ public class MainAppController {
     MenuItem changeBallYellow;
     @FXML
     MenuItem changeBallCyan;
+    @FXML
+    MenuItem mnItemAbout;  
     
-
-    @FXML
-    MenuItem mnItemAbout;
-    @FXML
-    private Text text = new Text();
-    
-    //methods
-    @FXML
-    public void displayPosition(MouseEvent event){
-        text.setX(event.getX());
-        text.setY(event.getY());
-        text.setText("X = " + event.getX() + "        Y = " + event.getY());
+//methods
+    public void mouseEventHandler(MouseEvent event){
+        mousePtLabel.setTextFill(Color.BLACK);
+        mousePtLabel.setAlignment(Pos.CENTER);
+        mousePtLabel.setText("X = " + (event.getX()) + "     Y = " + (event.getY()));
     }
+    
+    
 
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
         
         if(mars.isSelected()){
 
-            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            /*BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
             new BackgroundSize(1.0,1.0, true, true, false, false));           
-            pane.setBackground(new Background(marsImage));
+            pane.setBackground(new Background(marsImage));*/
             gravity = 3.72;
             
             
         } else if (earth.isSelected()){
 
-            BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            /*BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
             new BackgroundSize(1.0,1.0, true, true, false, false));
             pane.setBackground(new Background(earthImage));
-            pane.setStyle(EARTH_LANDSCAPE);
+            pane.setStyle(EARTH_LANDSCAPE);*/
             gravity = 9.81;
             
         } else if (moon.isSelected()){
 
-            BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            /*BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
             BackgroundSize.DEFAULT);
             pane.setBackground(new Background(moonImage));
-            pane.setStyle(MOON_LANDSCAPE);
+            pane.setStyle(MOON_LANDSCAPE);*/
             gravity = 1.62;
             
         }
@@ -172,7 +160,7 @@ public class MainAppController {
     @FXML
     public void startEventHandler(Event e)
     {
-        if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0){
+        if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0 && Double.parseDouble(initialHeight.getText())>0 && Double.parseDouble(initialHeight.getText())<760){
             mmp = new MathMainApp(Double.parseDouble(initialHeight.getText()),Double.parseDouble(angle.getText()),Double.parseDouble(initialVelocity.getText()),gravity);
             points = mmp.getPoints();
             pt = new PathTransition(Duration.seconds(mmp.getTime()/speed), poly, dot);
@@ -182,7 +170,51 @@ public class MainAppController {
             pane.getChildren().addAll(poly,dot);
             pt.play();
             btnStart.setDisable(true);
-        }   
+        }  
+        
+        if(Double.parseDouble(initialHeight.getText())>=760){
+            Stage stage = new Stage();
+            this.pane = new GridPane();
+            Label lb = new Label();
+            lb.setText("you cannot enter an initial height higher than 760");
+            lb.setAlignment(Pos.CENTER);
+            
+            this.pane.getChildren().add(lb);
+            
+            Scene scene = new Scene(pane, 300, 300);
+            stage.setScene(scene);
+            stage.setTitle("Error");
+            stage.show();
+            
+            pane.getChildren().clear();
+            currentTime = 0.0;
+            timeline.stop();
+            pt.stop();
+            poly.getPoints().clear();
+            btnStart.setDisable(false);
+        }
+        
+        if(Double.parseDouble(initialHeight.getText())<0){
+            Stage stage = new Stage();
+            this.pane = new GridPane();
+            Label lb = new Label();
+            lb.setText("you must enter a positive initial height");
+            lb.setAlignment(Pos.CENTER);
+            
+            this.pane.getChildren().add(lb);
+            
+            Scene scene = new Scene(pane, 300, 300);
+            stage.setScene(scene);
+            stage.setTitle("Error");
+            stage.show();
+            
+            pane.getChildren().clear();
+            currentTime = 0.0;
+            timeline.stop();
+            pt.stop();
+            poly.getPoints().clear();
+            btnStart.setDisable(false);
+        }
         
         if(Double.parseDouble(initialVelocity.getText())<=0){
             Stage stage = new Stage();
@@ -197,6 +229,13 @@ public class MainAppController {
             stage.setScene(scene);
             stage.setTitle("Error");
             stage.show();
+            
+            pane.getChildren().clear();
+            currentTime = 0.0;
+            timeline.stop();
+            pt.stop();
+            poly.getPoints().clear();
+            btnStart.setDisable(false);
         }
         
         if(Double.parseDouble(angle.getText())<=0){
@@ -212,6 +251,13 @@ public class MainAppController {
             stage.setScene(scene);
             stage.setTitle("Error");
             stage.show();
+            
+            pane.getChildren().clear();
+            currentTime = 0.0;
+            timeline.stop();
+            pt.stop();
+            poly.getPoints().clear();
+            btnStart.setDisable(false);
         }
     }
     
