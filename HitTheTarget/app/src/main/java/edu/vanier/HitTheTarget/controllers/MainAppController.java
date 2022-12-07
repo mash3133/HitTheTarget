@@ -96,7 +96,19 @@ public class MainAppController {
     //toolbar
     @FXML
     MenuItem mnItemClose;
-
+    
+    @FXML
+    Label mousePtLabel = new Label();
+    
+    
+//methods
+    public void mouseEventHandler(MouseEvent event){
+        mousePtLabel.setTextFill(Color.BLACK);
+            mousePtLabel.setText("X = " + (event.getX()-0.8) + "     Y = " + (event.getY()+780
+                    
+                    ));
+    }
+    
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
         
@@ -389,4 +401,92 @@ public class MainAppController {
     public void setMnItemClose(MenuItem mnItemClose) {
         this.mnItemClose = mnItemClose;
     }
+
+    public Polyline getPoly() {
+        return poly;
+    }
+
+    public void setPoly(Polyline poly) {
+        this.poly = poly;
+    }
+
+    public ObservableList<MathMainApp> getItems() {
+        return items;
+    }
+
+    public void setItems(ObservableList<MathMainApp> items) {
+        this.items = items;
+    }
+
+    public static double getGravity() {
+        return gravity;
+    }
+
+    public static void setGravity(double gravity) {
+        MainAppController.gravity = gravity;
+    }
+
+    public Button getBtnStart() {
+        return btnStart;
+    }
+
+    public void setBtnStart(Button btnStart) {
+        this.btnStart = btnStart;
+    }
+
+    public Button getResumeBtn() {
+        return resumeBtn;
+    }
+
+    public void setResumeBtn(Button resumeBtn) {
+        this.resumeBtn = resumeBtn;
+    }
+
+    public ToggleGroup getGravityOptions() {
+        return gravityOptions;
+    }
+
+    public void setGravityOptions(ToggleGroup gravityOptions) {
+        this.gravityOptions = gravityOptions;
+    }
+
+    public RadioButton getMars() {
+        return mars;
+    }
+
+    public void setMars(RadioButton mars) {
+        this.mars = mars;
+    }
+
+    public RadioButton getEarth() {
+        return earth;
+    }
+
+    public void setEarth(RadioButton earth) {
+        this.earth = earth;
+    }
+
+    public RadioButton getMoon() {
+        return moon;
+    }
+
+    public void setMoon(RadioButton moon) {
+        this.moon = moon;
+    }
+
+    public Pane getPane() {
+        return pane;
+    }
+
+    public void setPane(Pane pane) {
+        this.pane = pane;
+    }
+
+    public Label getMousePtLabel() {
+        return mousePtLabel;
+    }
+
+    public void setMousePtLabel(Label mousePtLabel) {
+        this.mousePtLabel = mousePtLabel;
+    }   
 }

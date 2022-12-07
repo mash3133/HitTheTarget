@@ -16,13 +16,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <right>
         <VBox prefHeight="623.0" prefWidth="242.0" BorderPane.alignment="CENTER">
             <children>
-                <Pane prefHeight="540.0" prefWidth="196.0">
+                <Pane onMouseMoved="#mouseEventHandler" prefHeight="540.0" prefWidth="196.0">
                     <children>
                         <Label layoutX="24.0" layoutY="85.0" text="Initial velocity (m/s) :" />
                         <TextField fx:id="initialVelocity" layoutX="138.0" layoutY="81.0" prefHeight="25.0" prefWidth="59.0" />
@@ -44,10 +43,10 @@
         </VBox>
     </right>
    <center>
-      <Pane fx:id="pane" prefHeight="504.0" prefWidth="510.0" style="-fx-border-color: black;">
+      <Pane fx:id="pane" onMouseMoved="#mouseEventHandler" prefHeight="504.0" prefWidth="510.0" style="-fx-border-color: black;">
          <children>
             <AnchorPane layoutX="-1.0" layoutY="530.0" />
-            <Text fx:id="txtPosition" layoutX="197.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="134.936767578125" />
+            <Label fx:id="mousePtLabel" layoutX="138.0" layoutY="6.0" prefHeight="17.0" prefWidth="253.0" />
          </children>
       </Pane>
    </center>
