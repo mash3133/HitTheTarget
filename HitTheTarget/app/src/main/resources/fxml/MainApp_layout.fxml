@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <right>
         <VBox prefHeight="623.0" prefWidth="242.0" BorderPane.alignment="CENTER">
             <children>
@@ -93,20 +93,12 @@
         <menus>
           <Menu mnemonicParsing="false" text="Options">
             <items>
-                  <Menu mnemonicParsing="false" text="Change ball's color">
-                    <items>
-                        <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Yellow" />
-                        <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Red" />
-                        <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Blue" />
-                        <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Cyan" />
-                    </items>
-                  </Menu>
-                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
+                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem fx:id="mnItemAbout" mnemonicParsing="false" onAction="#aboutBtnEventHandler" text="About" />
+              <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
         </menus>

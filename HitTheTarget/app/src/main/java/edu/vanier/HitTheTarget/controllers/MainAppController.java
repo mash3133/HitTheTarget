@@ -105,7 +105,7 @@ public class MainAppController {
 //methods
     public void mouseEventHandler(MouseEvent event){
         mousePtLabel.setTextFill(Color.BLACK);
-            mousePtLabel.setText("X = " + (event.getX()-0.8) + "     Y = " + (event.getY()+780
+            mousePtLabel.setText("X = " + (event.getX()-0.8) + "     Y = " + (event.getY()
                     
                     ));
     }
