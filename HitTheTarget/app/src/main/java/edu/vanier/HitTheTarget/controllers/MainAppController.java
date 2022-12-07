@@ -244,13 +244,13 @@ public class MainAppController {
     public void animate(){
         
         dot.setCenterX(points.get(0).getX());
-        dot.setCenterY(500-points.get(0).getY());
+        dot.setCenterY(100-points.get(0).getY());
         dot.setRadius(size);
         dot.setFill(black);
         
         
         points.forEach(p2 -> {
-            poly.getPoints().addAll(p2.getX(), 500-p2.getY());
+            poly.getPoints().addAll(p2.getX(), 780-p2.getY());
             
         });
         
