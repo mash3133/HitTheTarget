@@ -97,7 +97,7 @@ public class MainAppController {
     //toolbar
     @FXML
     MenuItem mnItemClose;
-<<<<<<< HEAD
+
     @FXML
     MenuItem mnItemAbout;
     @FXML
@@ -110,8 +110,7 @@ public class MainAppController {
         text.setY(event.getY());
         text.setText("X = " + event.getX() + "        Y = " + event.getY());
     }
-=======
->>>>>>> 7ab62a9c90152be9cc28ca44b9d4b15e46ca632c
+
 
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
