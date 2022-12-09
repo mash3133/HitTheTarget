@@ -173,11 +173,9 @@ public class MathMainApp {
     public double getCurrentY(double t){   
         return SF(this.y0+(this.vy0*t-0.5*this.ay*t*t),3);
     }
-<<<<<<< HEAD
     
     public double getCurrentV(double t){   
         return SF(Math.pow(Math.pow(this.vx0, 2)+Math.pow(this.vy0-this.ay*t, 2), 0.5),3);
     }
-=======
->>>>>>> parent of 4ad4f73 (On action added to scene builder)
+
 }
