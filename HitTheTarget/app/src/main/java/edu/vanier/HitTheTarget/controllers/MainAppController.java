@@ -124,32 +124,32 @@ public class MainAppController {
         
         if(mars.isSelected()){
 
-            /*BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundImage marsImage = new BackgroundImage(new Image(MARS_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
             new BackgroundSize(1.0,1.0, true, true, false, false));           
-            pane.setBackground(new Background(marsImage));*/
+            pane.setBackground(new Background(marsImage));
             gravity = 3.72;
             
             
         } else if (earth.isSelected()){
 
-            /*BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
             new BackgroundSize(1.0,1.0, true, true, false, false));
             pane.setBackground(new Background(earthImage));
-            pane.setStyle(EARTH_LANDSCAPE);*/
+            pane.setStyle(EARTH_LANDSCAPE);
             gravity = 9.81;
             
         } else if (moon.isSelected()){
 
-            /*BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
             BackgroundSize.DEFAULT);
             pane.setBackground(new Background(moonImage));
-            pane.setStyle(MOON_LANDSCAPE);*/
+            pane.setStyle(MOON_LANDSCAPE);
             gravity = 1.62;
             
         }
