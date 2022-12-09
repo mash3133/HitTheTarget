@@ -98,12 +98,10 @@ public class MainAppController {
     TextField angle = new TextField();
     //toolbar
     @FXML
-<<<<<<< HEAD
     MenuItem mnItemClose;  
-=======
-    MenuItem mnItemClose;
+
     //menu items
->>>>>>> 5d299da933379b4349165b325b89aa12d6b98e64
+
     @FXML
     Label mousePtLabel = new Label();
     @FXML
@@ -115,7 +113,6 @@ public class MainAppController {
     @FXML
     MenuItem changeBallCyan;
     @FXML
-<<<<<<< HEAD
     MenuItem changeBallBlackWhite;
     @FXML
     MenuItem changeBallBlueRed;
@@ -131,10 +128,7 @@ public class MainAppController {
         
         
       
-    
-=======
-    MenuItem mnItemAbout;
->>>>>>> 5d299da933379b4349165b325b89aa12d6b98e64
+
 //methods
     public void mouseEventHandler(MouseEvent event){
         mousePtLabel.setTextFill(Color.BLACK);
@@ -390,7 +384,7 @@ public class MainAppController {
     public void handleCyanColor(){
         dot.setFill(color = Color.CYAN);
     }
-<<<<<<< HEAD
+
     
     public void handleBlackAndWhite(){
         ft1.setCycleCount(Timeline.INDEFINITE);
@@ -413,11 +407,7 @@ public class MainAppController {
 
     }
     
-    
-     
-    
-=======
->>>>>>> 5d299da933379b4349165b325b89aa12d6b98e64
+   
     //mutators
     public Polyline getPl() {
         return poly;
