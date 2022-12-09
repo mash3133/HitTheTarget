@@ -2,6 +2,7 @@ package edu.vanier.HitTheTarget.controllers;
 
 import edu.vanier.HitTheTarget.math.MathMainApp;
 import java.util.ArrayList;
+import javafx.animation.FillTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
@@ -99,8 +100,7 @@ public class MainAppController {
     
     //toolbar
     @FXML
-    MenuItem mnItemClose;
-    
+    MenuItem mnItemClose;  
     @FXML
     Label mousePtLabel = new Label();
     @FXML
@@ -112,7 +112,21 @@ public class MainAppController {
     @FXML
     MenuItem changeBallCyan;
     @FXML
-    MenuItem mnItemAbout;  
+    MenuItem changeBallBlackWhite;
+    @FXML
+    MenuItem changeBallBlueRed;
+    @FXML
+    MenuItem changeBallBrownGold;
+    @FXML
+    MenuItem mnItemAbout; 
+    
+    //Alternating colors transitions
+    FillTransition ft1 = new FillTransition(Duration.millis(900), dot, Color.BLACK, Color.WHITE);
+    FillTransition ft2 = new FillTransition(Duration.millis(900), dot, Color.BLUE, Color.RED);
+    FillTransition ft3 = new FillTransition(Duration.millis(900), dot, Color.BROWN, Color.GOLD);
+        
+        
+      
     
 //methods
     public void mouseEventHandler(MouseEvent event){
@@ -179,6 +193,8 @@ public class MainAppController {
             pane.getChildren().addAll(poly,dot);
             pt.play();
             btnStart.setDisable(true);
+            
+            
         }  
         
         if(Double.parseDouble(initialHeight.getText())>=760){
@@ -377,6 +393,27 @@ public class MainAppController {
     
     public void handleCyanColor(){
         dot.setFill(color = Color.CYAN);
+    }
+    
+    public void handleBlackAndWhite(){
+        ft1.setCycleCount(Timeline.INDEFINITE);
+        ft1.setAutoReverse(true);
+        ft1.play();
+
+    }
+    
+    public void handleBlueAndRed(){
+        ft2.setCycleCount(Timeline.INDEFINITE);
+        ft2.setAutoReverse(true);
+        ft2.play();
+
+    }
+    
+    public void handleBrownAndGold(){
+        ft3.setCycleCount(Timeline.INDEFINITE);
+        ft3.setAutoReverse(true);
+        ft3.play();
+
     }
     
     

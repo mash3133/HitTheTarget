@@ -101,6 +101,9 @@
                         <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Red" />
                         <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Blue" />
                         <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Cyan" />
+                        <MenuItem fx:id="changeBallBlackWhite" mnemonicParsing="false" onAction="#handleBlackAndWhite" text="Black &amp; White" />
+                        <MenuItem fx:id="changeBallBlueRed" mnemonicParsing="false" onAction="#handleBlueAndRed" text="Blue &amp; Red" />
+                        <MenuItem fx:id="changeBallBrownGold" mnemonicParsing="false" onAction="#handleBrownAndGold" text="Brown &amp; Gold" />
                     </items>
                   </Menu>
                   <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
