@@ -97,8 +97,16 @@
         <menus>
           <Menu mnemonicParsing="false" text="Options">
             <items>
+<<<<<<< HEAD
                   <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close" />
                   <MenuItem mnemonicParsing="false" text="Save " />
+=======
+                  <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Change ball color to blue" />
+                  <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Change ball color to red" />
+                  <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Change ball color to yellow" />
+                  <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Change ball color to cyan" />
+                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
+>>>>>>> parent of c73b79d (Update MainApp_layout.fxml)
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
