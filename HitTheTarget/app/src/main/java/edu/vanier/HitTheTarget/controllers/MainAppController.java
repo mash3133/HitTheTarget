@@ -3,6 +3,7 @@ package edu.vanier.HitTheTarget.controllers;
 import edu.vanier.HitTheTarget.math.MathMainApp;
 import java.io.IOException;
 import java.util.ArrayList;
+import javafx.animation.FillTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
@@ -59,7 +60,7 @@ public class MainAppController {
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
     private static double gravity = 9.8;
-    private static int size = 5;
+    private static int size = 6;
     private static Color color = Color.BLACK;
     private static int speed = 1;
     Stage Stage;
@@ -103,8 +104,10 @@ public class MainAppController {
     TextField angle = new TextField();
     //toolbar
     @FXML
-    MenuItem mnItemClose;
+    MenuItem mnItemClose;  
+
     //menu items
+
     @FXML
     Label mousePtLabel = new Label();
     @FXML
@@ -116,7 +119,26 @@ public class MainAppController {
     @FXML
     MenuItem changeBallCyan;
     @FXML
-    MenuItem mnItemAbout;
+    MenuItem changeBallBlackWhite;
+    @FXML
+    MenuItem changeBallBlueRed;
+    @FXML
+    MenuItem changeBallBrownGold;
+    @FXML
+    MenuItem mnItemAbout; 
+    @FXML
+    MenuItem smallBall; 
+    @FXML
+    MenuItem bigBall; 
+    
+    //Alternating colors transitions
+    FillTransition ft1 = new FillTransition(Duration.millis(900), dot, Color.BLACK, Color.WHITE);
+    FillTransition ft2 = new FillTransition(Duration.millis(900), dot, Color.BLUE, Color.RED);
+    FillTransition ft3 = new FillTransition(Duration.millis(900), dot, Color.BROWN, Color.GOLD);
+        
+        
+      
+
 //methods
     public void handleSaveBtn(ActionEvent event) throws IOException{
         Stage stage2 = new Stage();
@@ -188,6 +210,8 @@ public class MainAppController {
             pane.getChildren().addAll(poly,dot);
             pt.play();
             btnStart.setDisable(true);
+            
+            
         }  
         
         if(Double.parseDouble(initialHeight.getText())>=760){
@@ -386,6 +410,39 @@ public class MainAppController {
     public void handleCyanColor(){
         dot.setFill(color = Color.CYAN);
     }
+
+    
+    public void handleBlackAndWhite(){
+        ft1.setCycleCount(Timeline.INDEFINITE);
+        ft1.setAutoReverse(true);
+        ft1.play();
+
+    }
+    
+    public void handleBlueAndRed(){
+        ft2.setCycleCount(Timeline.INDEFINITE);
+        ft2.setAutoReverse(true);
+        ft2.play();
+
+    }
+    
+    public void handleBrownAndGold(){
+        ft3.setCycleCount(Timeline.INDEFINITE);
+        ft3.setAutoReverse(true);
+        ft3.play();
+
+    }
+    
+    //Change size of the ball methods
+    
+    public void handleBigBall(){
+        size = 9;
+    }
+    
+    public void handleSmallBall(){
+        size = 5;
+    }
+    
     //mutators
     public Polyline getPl() {
         return poly;
