@@ -53,7 +53,7 @@ public class MainAppController {
     private static MathMainApp mmp;
     private static ArrayList<Polyline> plList = new ArrayList<Polyline>();
     private static Timeline timeline = new Timeline();
-    private double currentTime = 0.0;
+    private double Time = 0.0;
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
     private static double gravity = 9.8;
@@ -89,7 +89,6 @@ public class MainAppController {
     RadioButton jupiter = new RadioButton();
     @FXML
     Pane pane = new Pane();
-    
     //textfield
     @FXML
     TextField initialVelocity = new TextField();
@@ -97,10 +96,14 @@ public class MainAppController {
     TextField initialHeight = new TextField();
     @FXML
     TextField angle = new TextField();
-    
     //toolbar
     @FXML
+<<<<<<< HEAD
     MenuItem mnItemClose;  
+=======
+    MenuItem mnItemClose;
+    //menu items
+>>>>>>> 5d299da933379b4349165b325b89aa12d6b98e64
     @FXML
     Label mousePtLabel = new Label();
     @FXML
@@ -112,6 +115,7 @@ public class MainAppController {
     @FXML
     MenuItem changeBallCyan;
     @FXML
+<<<<<<< HEAD
     MenuItem changeBallBlackWhite;
     @FXML
     MenuItem changeBallBlueRed;
@@ -128,14 +132,15 @@ public class MainAppController {
         
       
     
+=======
+    MenuItem mnItemAbout;
+>>>>>>> 5d299da933379b4349165b325b89aa12d6b98e64
 //methods
     public void mouseEventHandler(MouseEvent event){
         mousePtLabel.setTextFill(Color.BLACK);
         mousePtLabel.setAlignment(Pos.CENTER);
         mousePtLabel.setText("X = " + (event.getX()) + "     Y = " + (event.getY()));
     }
-    
-
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
         
@@ -146,20 +151,15 @@ public class MainAppController {
             BackgroundPosition.DEFAULT,
             new BackgroundSize(1.0,1.0, true, true, false, false));           
             pane.setBackground(new Background(marsImage));
-            gravity = 3.72;
-            
-            
+            gravity = 3.72; 
         } else if (earth.isSelected()){
-
             BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
             new BackgroundSize(1.0,1.0, true, true, false, false));           
             pane.setBackground(new Background(earthImage));
             gravity = 9.81;
-            
         } else if (moon.isSelected()){
-
             BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
@@ -178,12 +178,11 @@ public class MainAppController {
             
         }
     }
-    
     //Plays the animation
     @FXML
     public void startEventHandler(Event e)
     {
-        if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0 && Double.parseDouble(initialHeight.getText())>=0 && Double.parseDouble(initialHeight.getText())<760){
+        if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0 && Double.parseDouble(initialHeight.getText())>0 && Double.parseDouble(initialHeight.getText())<760){
             mmp = new MathMainApp(Double.parseDouble(initialHeight.getText()),Double.parseDouble(angle.getText()),Double.parseDouble(initialVelocity.getText()),gravity);
             points = mmp.getPoints();
             pt = new PathTransition(Duration.seconds(mmp.getTime()/speed), poly, dot);
@@ -212,7 +211,7 @@ public class MainAppController {
             stage.show();
             
             pane.getChildren().clear();
-            currentTime = 0.0;
+            Time = 0.0;
             timeline.stop();
             pt.stop();
             poly.getPoints().clear();
@@ -234,7 +233,7 @@ public class MainAppController {
             stage.show();
             
             pane.getChildren().clear();
-            currentTime = 0.0;
+            Time = 0.0;
             timeline.stop();
             pt.stop();
             poly.getPoints().clear();
@@ -256,7 +255,7 @@ public class MainAppController {
             stage.show();
             
             pane.getChildren().clear();
-            currentTime = 0.0;
+            Time = 0.0;
             timeline.stop();
             pt.stop();
             poly.getPoints().clear();
@@ -278,7 +277,7 @@ public class MainAppController {
             stage.show();
             
             pane.getChildren().clear();
-            currentTime = 0.0;
+            Time = 0.0;
             timeline.stop();
             pt.stop();
             poly.getPoints().clear();
@@ -305,7 +304,7 @@ public class MainAppController {
     @FXML
     public void resetEventHandler(Event e){
         pane.getChildren().clear();
-        currentTime = 0.0;
+        Time = 0.0;
         timeline.stop();
         pt.stop();
         poly.getPoints().clear();
@@ -314,13 +313,10 @@ public class MainAppController {
     
     //animation
     public void time(){
-        timeline = new Timeline(new KeyFrame(Duration.seconds(0), new EventHandler<ActionEvent>(){
-            @Override public void handle(ActionEvent actionEvent){
-                double t = currentTime();
-                if(Math.abs(mmp.getCurrentX(t)-mmp.getDistance())<2);
-            }
-        }
-        ),
+        timeline = new Timeline(new KeyFrame(Duration.seconds(0), (ActionEvent actionEvent) -> {
+            double t = currentTime();
+            if(Math.abs(mmp.getCurrentX(t)-mmp.getDistance())<2);
+        }),
       new KeyFrame(Duration.seconds(0.03))
         );
         timeline.setCycleCount((int) (mmp.getTime()/0.03/speed)+1);
@@ -328,8 +324,8 @@ public class MainAppController {
     }
     
     double currentTime(){
-        currentTime=currentTime+speed*0.03;
-        return currentTime;
+        Time=Time+speed*0.03;
+        return Time;
     }
     
     public void animate(){
@@ -394,6 +390,7 @@ public class MainAppController {
     public void handleCyanColor(){
         dot.setFill(color = Color.CYAN);
     }
+<<<<<<< HEAD
     
     public void handleBlackAndWhite(){
         ft1.setCycleCount(Timeline.INDEFINITE);
@@ -419,6 +416,8 @@ public class MainAppController {
     
      
     
+=======
+>>>>>>> 5d299da933379b4349165b325b89aa12d6b98e64
     //mutators
     public Polyline getPl() {
         return poly;
@@ -469,11 +468,11 @@ public class MainAppController {
     }
 
     public double getCurrentTime() {
-        return currentTime;
+        return Time;
     }
 
     public void setCurrentTime(double currentTime) {
-        this.currentTime = currentTime;
+        this.Time = currentTime;
     }
 
     public static ArrayList<Point2D> getPoints() {
