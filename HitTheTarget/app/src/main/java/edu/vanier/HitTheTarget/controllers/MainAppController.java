@@ -407,7 +407,6 @@ public class MainAppController {
 
     }
     
-   
     //mutators
     public Polyline getPl() {
         return poly;
