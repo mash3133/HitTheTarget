@@ -32,12 +32,13 @@
                         <ToggleGroup fx:id="gravityOptions" />
                      </toggleGroup>
                   </RadioButton>
-                        <RadioButton fx:id="earth" layoutX="97.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Earth" toggleGroup="$gravityOptions" />
+                        <RadioButton fx:id="earth" layoutX="93.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" prefHeight="18.0" prefWidth="53.0" text="Earth" toggleGroup="$gravityOptions" />
                         <RadioButton fx:id="moon" layoutX="176.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Moon" toggleGroup="$gravityOptions" />
                         <Label layoutX="17.0" layoutY="312.0" prefHeight="17.0" prefWidth="97.0" text="Initial height (m) :" />
                         <TextField fx:id="initialHeight" layoutX="121.0" layoutY="308.0" prefHeight="25.0" prefWidth="85.0" />
                         <Label layoutX="37.0" layoutY="382.0" text="Angle (°) : " />
                         <TextField fx:id="angle" layoutX="121.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
+                  <RadioButton fx:id="jupiter" layoutX="94.0" layoutY="252.0" mnemonicParsing="false" onAction="#chosenGravity" text="Jupiter" toggleGroup="$gravityOptions" />
                     </children>
                 </Pane>
             </children>
