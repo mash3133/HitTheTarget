@@ -1,4 +1,3 @@
-@ -1,116 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
@@ -37,7 +36,7 @@
                         <RadioButton fx:id="moon" layoutX="176.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Moon" toggleGroup="$gravityOptions" />
                         <Label layoutX="17.0" layoutY="312.0" prefHeight="17.0" prefWidth="97.0" text="Initial height (m) :" />
                         <TextField fx:id="initialHeight" layoutX="121.0" layoutY="308.0" prefHeight="25.0" prefWidth="85.0" />
-                        <Label layoutX="37.0" layoutY="382.0" text="Angle (°) : " />
+                        <Label layoutX="37.0" layoutY="382.0" text="Angle (Â°) : " />
                         <TextField fx:id="angle" layoutX="121.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
                     </children>
                 </Pane>
@@ -95,12 +94,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Options">
             <items>
-                  <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Change ball color to blue" />
-                  <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Change ball color to red" />
-                  <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Change ball color to yellow" />
-                  <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Change ball color to cyan" />
-
-                  <Menu mnemonicParsing="false" text="Change ball's color">
+                <Menu mnemonicParsing="false" text="Change ball's color">
                     <items>
                         <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Yellow" />
                         <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Red" />
@@ -108,25 +102,14 @@
                         <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Cyan" />
                     </items>
                   </Menu>
-
                   <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" onAction="#aboutBtnEventHandler" text="Help">
+          <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem fx:id="mnItemAbout" mnemonicParsing="false" onAction="#aboutBtnEventHandler" text="About" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Setting">
-              <items>
-                  <Menu mnemonicParsing="false" text="Change ball's color">
-                     <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                     </items>
-                  </Menu>
-              </items>
-            </Menu>
         </menus>
       </MenuBar>
    </top>
