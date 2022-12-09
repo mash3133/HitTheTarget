@@ -1,6 +1,7 @@
 package edu.vanier.HitTheTarget.controllers;
 
 import edu.vanier.HitTheTarget.math.MathMainApp;
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -11,8 +12,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -30,12 +31,14 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polyline;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -59,6 +62,7 @@ public class MainAppController {
     private static int size = 5;
     private static Color color = Color.BLACK;
     private static int speed = 1;
+    Stage Stage;
     
     private static final String RESOURCES_FOLDER = "";
     private static final String IMAGES_FOLDER = RESOURCES_FOLDER + "Images/";
@@ -76,6 +80,8 @@ public class MainAppController {
     Button btnReplay = new Button();
     @FXML
     Button resumeBtn = new Button();
+    @FXML
+    Button saveBtn = new Button();
     @FXML
     ToggleGroup gravityOptions = new ToggleGroup();
     @FXML
@@ -112,6 +118,20 @@ public class MainAppController {
     @FXML
     MenuItem mnItemAbout;
 //methods
+    public void handleSaveBtn(ActionEvent event) throws IOException{
+        Stage stage2 = new Stage();
+        stage2.initModality(Modality.APPLICATION_MODAL);
+        stage2.initOwner(Stage);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SaveFile.fxml"));
+        Stage saveName = new Stage();
+        SaveFileController sfc = new SaveFileController(this, saveName);
+        loader.setController(sfc);
+        BorderPane root = loader.load();
+        Scene SavePane = new Scene(root);
+        stage2.setScene(SavePane);
+        stage2.show();
+    }
+    
     public void mouseEventHandler(MouseEvent event){
         mousePtLabel.setTextFill(Color.BLACK);
         mousePtLabel.setAlignment(Pos.CENTER);
@@ -258,6 +278,8 @@ public class MainAppController {
             btnStart.setDisable(false);
         }
     }
+    
+    
     
     //Pauses animation
     @FXML
@@ -596,4 +618,70 @@ public class MainAppController {
     public void setMousePtLabel(Label mousePtLabel) {
         this.mousePtLabel = mousePtLabel;
     }   
+
+    public double getTime() {
+        return Time;
+    }
+
+    public void setTime(double Time) {
+        this.Time = Time;
+    }
+
+    public Button getSaveBtn() {
+        return saveBtn;
+    }
+
+    public void setSaveBtn(Button saveBtn) {
+        this.saveBtn = saveBtn;
+    }
+
+    public RadioButton getJupiter() {
+        return jupiter;
+    }
+
+    public void setJupiter(RadioButton jupiter) {
+        this.jupiter = jupiter;
+    }
+
+    public MenuItem getChangeBallBlue() {
+        return changeBallBlue;
+    }
+
+    public void setChangeBallBlue(MenuItem changeBallBlue) {
+        this.changeBallBlue = changeBallBlue;
+    }
+
+    public MenuItem getChangeBallRed() {
+        return changeBallRed;
+    }
+
+    public void setChangeBallRed(MenuItem changeBallRed) {
+        this.changeBallRed = changeBallRed;
+    }
+
+    public MenuItem getChangeBallYellow() {
+        return changeBallYellow;
+    }
+
+    public void setChangeBallYellow(MenuItem changeBallYellow) {
+        this.changeBallYellow = changeBallYellow;
+    }
+
+    public MenuItem getChangeBallCyan() {
+        return changeBallCyan;
+    }
+
+    public void setChangeBallCyan(MenuItem changeBallCyan) {
+        this.changeBallCyan = changeBallCyan;
+    }
+
+    public MenuItem getMnItemAbout() {
+        return mnItemAbout;
+    }
+
+    public void setMnItemAbout(MenuItem mnItemAbout) {
+        this.mnItemAbout = mnItemAbout;
+    }
+    
+    
 }
