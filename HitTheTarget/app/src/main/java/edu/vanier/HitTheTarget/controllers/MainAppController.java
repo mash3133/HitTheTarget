@@ -65,6 +65,7 @@ public class MainAppController {
     public static final String MARS_LANDSCAPE = IMAGES_FOLDER + "mars landscape.jpg";
     public static final String EARTH_LANDSCAPE = IMAGES_FOLDER + "earth landscape.jpg";
     public static final String MOON_LANDSCAPE = IMAGES_FOLDER + "moon landscape.jpg";
+    public static final String JUPITER_LANDSCAPE = IMAGES_FOLDER + "jupiter landscape.jpg";
     
     //buttons
     @FXML
@@ -83,6 +84,8 @@ public class MainAppController {
     RadioButton earth = new RadioButton();
     @FXML
     RadioButton moon = new RadioButton();
+    @FXML
+    RadioButton jupiter = new RadioButton();
     @FXML
     Pane pane = new Pane();
     
@@ -137,9 +140,8 @@ public class MainAppController {
             BackgroundImage earthImage = new BackgroundImage(new Image(EARTH_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
-            new BackgroundSize(1.0,1.0, true, true, false, false));
+            new BackgroundSize(1.0,1.0, true, true, false, false));           
             pane.setBackground(new Background(earthImage));
-            pane.setStyle(EARTH_LANDSCAPE);
             gravity = 9.81;
             
         } else if (moon.isSelected()){
@@ -147,10 +149,18 @@ public class MainAppController {
             BackgroundImage moonImage = new BackgroundImage(new Image(MOON_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
             BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.DEFAULT,
-            BackgroundSize.DEFAULT);
+            new BackgroundSize(1.0,1.0, true, true, false, false));           
             pane.setBackground(new Background(moonImage));
-            pane.setStyle(MOON_LANDSCAPE);
             gravity = 1.62;
+            
+        }else if (jupiter.isSelected()){
+            
+            BackgroundImage jupiterImage = new BackgroundImage(new Image(JUPITER_LANDSCAPE),BackgroundRepeat.NO_REPEAT, 
+            BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.DEFAULT,
+            new BackgroundSize(1.0,1.0, true, true, false, false));           
+            pane.setBackground(new Background(jupiterImage));
+            gravity = 24.79;
             
         }
     }
