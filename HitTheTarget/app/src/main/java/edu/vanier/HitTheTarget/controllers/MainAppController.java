@@ -57,7 +57,7 @@ public class MainAppController {
     private static ArrayList<Point2D> points;
     public ObservableList<MathMainApp> items = FXCollections.observableArrayList();
     private static double gravity = 9.8;
-    private static int size = 5;
+    private static int size = 6;
     private static Color color = Color.BLACK;
     private static int speed = 1;
     
@@ -120,6 +120,10 @@ public class MainAppController {
     MenuItem changeBallBrownGold;
     @FXML
     MenuItem mnItemAbout; 
+    @FXML
+    MenuItem smallBall; 
+    @FXML
+    MenuItem bigBall; 
     
     //Alternating colors transitions
     FillTransition ft1 = new FillTransition(Duration.millis(900), dot, Color.BLACK, Color.WHITE);
@@ -405,6 +409,16 @@ public class MainAppController {
         ft3.setAutoReverse(true);
         ft3.play();
 
+    }
+    
+    //Change size of the ball methods
+    
+    public void handleBigBall(){
+        size = 9;
+    }
+    
+    public void handleSmallBall(){
+        size = 5;
     }
     
     //mutators

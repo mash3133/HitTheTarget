@@ -106,6 +106,12 @@
                         <MenuItem fx:id="changeBallBrownGold" mnemonicParsing="false" onAction="#handleBrownAndGold" text="Brown &amp; Gold" />
                     </items>
                   </Menu>
+                  <Menu mnemonicParsing="false" text="Change ball's size">
+                     <items>
+                        <MenuItem fx:id="smallBall" mnemonicParsing="false" onAction="#handleSmallBall" text="Small" />
+                        <MenuItem fx:id="bigBall" mnemonicParsing="false" onAction="#handleBigBall" text="Big" />
+                     </items>
+                  </Menu>
                   <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
             </items>
           </Menu>
