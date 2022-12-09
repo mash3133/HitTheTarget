@@ -57,8 +57,12 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="46.0" prefWidth="576.0" BorderPane.alignment="CENTER">
          <children>
+<<<<<<< HEAD
             <Button fx:id="resumeBtn" alignment="CENTER" layoutX="217.0" layoutY="13.0" mnemonicParsing="false" onAction="#resumeEventHandler" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color:               linear-gradient(#f2f2f2, #d6d6d6),              linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),              linear-gradient(#dddddd 0%, #f6f6f6 50%);              -fx-background-radius: 8,7,6;              -fx-background-insets: 0,1,2;              -fx-text-fill: black;              -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="Resume" />
                 <Button fx:id="btnPause" alignment="CENTER" mnemonicParsing="false" onAction="#pauseEventHandler" prefHeight="26.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
+=======
+                <Button fx:id="btnPause" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
+>>>>>>> parent of 4ad4f73 (On action added to scene builder)
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -67,7 +71,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnStart" alignment="CENTER" mnemonicParsing="false" onAction="#startEventHandler" prefHeight="40.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
+                <Button fx:id="btnStart" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="26.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -76,7 +80,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnReplay" alignment="CENTER" mnemonicParsing="false" onAction="#resetEventHandler" prefHeight="40.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
+                <Button fx:id="btnReplay" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="26.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                             <image>
