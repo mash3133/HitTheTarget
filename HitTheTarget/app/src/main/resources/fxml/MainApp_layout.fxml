@@ -101,11 +101,21 @@
                   <MenuItem mnemonicParsing="false" text="Save " />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" onAction="#aboutBtnEventHandler" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Setting">
+              <items>
+                  <Menu mnemonicParsing="false" text="Change ball's color">
+                     <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                     </items>
+                  </Menu>
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
