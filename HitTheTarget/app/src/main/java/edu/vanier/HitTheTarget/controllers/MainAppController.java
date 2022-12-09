@@ -159,7 +159,7 @@ public class MainAppController {
     @FXML
     public void startEventHandler(Event e)
     {
-        if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0 && Double.parseDouble(initialHeight.getText())>0 && Double.parseDouble(initialHeight.getText())<760){
+        if(Double.parseDouble(angle.getText())>0 && Double.parseDouble(initialVelocity.getText())>0 && Double.parseDouble(initialHeight.getText())>=0 && Double.parseDouble(initialHeight.getText())<760){
             mmp = new MathMainApp(Double.parseDouble(initialHeight.getText()),Double.parseDouble(angle.getText()),Double.parseDouble(initialVelocity.getText()),gravity);
             points = mmp.getPoints();
             pt = new PathTransition(Duration.seconds(mmp.getTime()/speed), poly, dot);
