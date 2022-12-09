@@ -1,3 +1,4 @@
+@ -1,116 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
@@ -16,14 +17,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <right>
         <VBox prefHeight="623.0" prefWidth="242.0" BorderPane.alignment="CENTER">
             <children>
-                <Pane onMouseMoved="#mouseEventHandler" prefHeight="540.0" prefWidth="196.0">
+                <Pane prefHeight="540.0" prefWidth="196.0">
                     <children>
-                        <Label layoutX="21.0" layoutY="85.0" prefHeight="17.0" prefWidth="117.0" text="Initial velocity (m/s) :" />
+                        <Label layoutX="24.0" layoutY="85.0" text="Initial velocity (m/s) :" />
                         <TextField fx:id="initialVelocity" layoutX="138.0" layoutY="81.0" prefHeight="25.0" prefWidth="59.0" />
                         <Label layoutX="79.0" layoutY="165.0" text="Gravity (m/s^2) :" />
                         <RadioButton fx:id="mars" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Mars">
@@ -35,7 +37,7 @@
                         <RadioButton fx:id="moon" layoutX="176.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Moon" toggleGroup="$gravityOptions" />
                         <Label layoutX="17.0" layoutY="312.0" prefHeight="17.0" prefWidth="97.0" text="Initial height (m) :" />
                         <TextField fx:id="initialHeight" layoutX="121.0" layoutY="308.0" prefHeight="25.0" prefWidth="85.0" />
-                        <Label layoutX="37.0" layoutY="382.0" text="Angle (Â°) : " />
+                        <Label layoutX="37.0" layoutY="382.0" text="Angle (°) : " />
                         <TextField fx:id="angle" layoutX="121.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
                     </children>
                 </Pane>
@@ -43,28 +45,18 @@
         </VBox>
     </right>
    <center>
-      <Pane fx:id="pane" onMouseMoved="#mouseEventHandler" prefHeight="504.0" prefWidth="510.0" style="-fx-border-color: black;">
+      <Pane fx:id="pane" prefHeight="504.0" prefWidth="510.0" style="-fx-border-color: black;">
          <children>
             <AnchorPane layoutX="-1.0" layoutY="530.0" />
-            <HBox layoutX="-1.0" prefHeight="26.0" prefWidth="511.0">
-               <children>
-                  <Label fx:id="mousePtLabel" prefHeight="18.0" prefWidth="511.0" />
-               </children>
-            </HBox>
+            <Text fx:id="txtPosition" layoutX="197.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="134.936767578125" />
          </children>
       </Pane>
    </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="46.0" prefWidth="576.0" BorderPane.alignment="CENTER">
          <children>
-
             <Button fx:id="resumeBtn" alignment="CENTER" layoutX="217.0" layoutY="13.0" mnemonicParsing="false" onAction="#resumeEventHandler" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color:               linear-gradient(#f2f2f2, #d6d6d6),              linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),              linear-gradient(#dddddd 0%, #f6f6f6 50%);              -fx-background-radius: 8,7,6;              -fx-background-insets: 0,1,2;              -fx-text-fill: black;              -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="Resume" />
                 <Button fx:id="btnPause" alignment="CENTER" mnemonicParsing="false" onAction="#pauseEventHandler" prefHeight="26.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
-
-                <Button fx:id="btnPause" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
-
-                <Button fx:id="btnPause" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
-
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -73,7 +65,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnStart" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
+                <Button fx:id="btnStart" alignment="CENTER" mnemonicParsing="false" onAction="#startEventHandler" prefHeight="40.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="26.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -82,7 +74,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnReplay" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
+                <Button fx:id="btnReplay" alignment="CENTER" mnemonicParsing="false" onAction="#resetEventHandler" prefHeight="40.0" prefWidth="63.0" style="-fx-background-radius: 0; -fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="26.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -103,21 +95,24 @@
         <menus>
           <Menu mnemonicParsing="false" text="Options">
             <items>
-
-                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Save " />
-
                   <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Change ball color to blue" />
                   <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Change ball color to red" />
                   <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Change ball color to yellow" />
                   <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Change ball color to cyan" />
+                  <Menu mnemonicParsing="false" text="Change ball's color">
+                    <items>
+                        <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Yellow" />
+                        <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Red" />
+                        <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Blue" />
+                        <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Cyan" />
+                    </items>
+                  </Menu>
                   <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
-
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="mnItemAbout" mnemonicParsing="false" onAction="#aboutBtnEventHandler" text="About" />
             </items>
           </Menu>
         </menus>
