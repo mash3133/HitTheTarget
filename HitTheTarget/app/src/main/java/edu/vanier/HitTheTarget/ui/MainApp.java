@@ -31,7 +31,7 @@ public class MainApp extends Application {
         
         loader.setController(new MainAppController());
         Pane root = loader.load();
-        Scene scene = new Scene(root, 600, 600);
+        Scene scene = new Scene(root, 1500, 800);
         stage.setFullScreen(true);
         stage.setScene(scene);
         stage.setTitle("Hit The Target");
