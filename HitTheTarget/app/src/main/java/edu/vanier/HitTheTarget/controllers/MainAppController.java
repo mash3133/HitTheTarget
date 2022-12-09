@@ -258,28 +258,6 @@ public class MainAppController {
             poly.getPoints().clear();
             btnStart.setDisable(false);
         }
-        
-        else{
-            Stage stage = new Stage();
-            this.pane = new GridPane();
-            Label lb = new Label();
-            lb.setText("please enter numbers");
-            lb.setAlignment(Pos.CENTER);
-            
-            this.pane.getChildren().add(lb);
-            
-            Scene scene = new Scene(pane, 300, 300);
-            stage.setScene(scene);
-            stage.setTitle("Error");
-            stage.show();
-            
-            pane.getChildren().clear();
-            currentTime = 0.0;
-            timeline.stop();
-            pt.stop();
-            poly.getPoints().clear();
-            btnStart.setDisable(false);
-        }
     }
     
     //Pauses animation
