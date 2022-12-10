@@ -41,6 +41,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -250,11 +251,13 @@ public class MainAppController {
             items.add(mmp);
             animate();
             time();
-            pane.getChildren().addAll(poly,dot);
+            accelerationVector();
+            pane.getChildren().addAll(poly,dot,accMars);
             pt.play();
             listView.setItems(items);
             btnStart.setDisable(true);
             displayStats();
+            
             
         }  
         
@@ -488,7 +491,7 @@ public class MainAppController {
         size = 5;
     }
     
-    //Display displacement of ball method
+    
     //mutators
     public Polyline getPl() {
         return poly;
