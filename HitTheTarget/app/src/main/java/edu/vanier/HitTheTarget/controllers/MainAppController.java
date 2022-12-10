@@ -266,13 +266,10 @@ public class MainAppController{
             items.add(mmp);
             animate();
             time();
-            accelerationVector();
-            pane.getChildren().addAll(poly,dot,accMars);
+            pane.getChildren().addAll(poly,dot);
             pt.play();
             btnStart.setDisable(true);
             displayStats();
-            
-            
         }  
         
         if(Double.parseDouble(initialHeight.getText())>=760){
