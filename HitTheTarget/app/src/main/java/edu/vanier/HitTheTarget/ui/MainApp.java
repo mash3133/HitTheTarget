@@ -39,7 +39,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(root, 1500, 800);
         //scene.getStylesheets().add(getClass().getResource("DarkMode.css").toExternalForm());
         primaryStage.setScene(scene);
-        primaryStage.setMaximized(true);
+        primaryStage.setFullScreen(true);
         primaryStage.show();
         }catch(Exception e){
             System.out.println(e);

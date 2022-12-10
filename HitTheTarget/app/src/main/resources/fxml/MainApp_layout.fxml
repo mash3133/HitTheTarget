@@ -58,7 +58,6 @@
                   <Label fx:id="currentVelocity" layoutX="99.0" layoutY="526.0" prefHeight="18.0" prefWidth="52.0" text="Velocity" />
                   <ToggleButton fx:id="BtnDarkMode" layoutX="73.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleDarkMode" text="DarkMode" />
                   <Label fx:id="currentVelocity" layoutX="99.0" layoutY="526.0" prefHeight="18.0" prefWidth="90.0" text="Velocity" />
-                  <ListView fx:id="listView" layoutX="62.0" layoutY="23.0" prefHeight="43.0" prefWidth="115.0" />
 
                     </children>
                 </Pane>
@@ -122,33 +121,43 @@
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Options">
-            <items>
-                <Menu mnemonicParsing="false" text="Change ball's color">
-                    <items>
-                        <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Yellow" />
-                        <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Red" />
-                        <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Blue" />
-                        <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Cyan" />
-                        <MenuItem fx:id="changeBallBlackWhite" mnemonicParsing="false" onAction="#handleBlackAndWhite" text="Black &amp; White" />
-                        <MenuItem fx:id="changeBallBlueRed" mnemonicParsing="false" onAction="#handleBlueAndRed" text="Blue &amp; Red" />
-                        <MenuItem fx:id="changeBallBrownGold" mnemonicParsing="false" onAction="#handleBrownAndGold" text="Brown &amp; Gold" />
-                        <MenuItem fx:id="changeBallRandom" mnemonicParsing="false" onAction="#handleRandomColor" text="Random" />
-                    </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Change ball's size">
-                     <items>
-                        <MenuItem fx:id="smallBall" mnemonicParsing="false" onAction="#handleSmallBall" text="Small" />
-                        <MenuItem fx:id="bigBall" mnemonicParsing="false" onAction="#handleBigBall" text="Big" />
-                     </items>
-                  </Menu>
-                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close window" />
-            </items>
+               <items>
+                  <MenuItem fx:id="mnItemClose" mnemonicParsing="false" onAction="#handleCloseApp" text="Close " />
+               </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem fx:id="mnItemAbout" mnemonicParsing="false" onAction="#aboutBtnEventHandler" text="About" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Setting">
+              <items>
+                  <Menu mnemonicParsing="false" text="Change ball's size">
+                     <items>
+                        <MenuItem fx:id="smallBall" mnemonicParsing="false" onAction="#handleSmallBall" text="Small" />
+                        <MenuItem fx:id="bigBall" mnemonicParsing="false" onAction="#handleBigBall" text="Big" />
+                     </items>
+                  </Menu>
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Colour">
+              <items>
+                  <MenuItem fx:id="changeBallYellow" mnemonicParsing="false" onAction="#handleYellowColor" text="Yellow" />
+                  <MenuItem fx:id="changeBallRed" mnemonicParsing="false" onAction="#handleRedColor" text="Red" />
+                  <MenuItem fx:id="changeBallBlue" mnemonicParsing="false" onAction="#handleBlueColor" text="Blue" />
+                  <MenuItem fx:id="changeBallCyan" mnemonicParsing="false" onAction="#handleCyanColor" text="Cyan" />
+                  <MenuItem fx:id="changeBallBlackWhite" mnemonicParsing="false" onAction="#handleBlackAndWhite" text="Black &amp; White" />
+                  <MenuItem fx:id="changeBallBlueRed" mnemonicParsing="false" onAction="#handleBlueAndRed" text="Blue &amp; Red" />
+                  <MenuItem fx:id="changeBallBrownGold" mnemonicParsing="false" onAction="#handleBrownAndGold" text="Brown &amp; Gold" />
+                  <MenuItem fx:id="changeBallRandom" mnemonicParsing="false" onAction="#handleRandomColor" text="Random" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Speed">
+              <items>
+                <MenuItem fx:id="slow" mnemonicParsing="false" onAction="#handleSlowSpeed" text="Slow" />
+                  <MenuItem fx:id="fast" mnemonicParsing="false" onAction="#handleFastSpeed" text="Fast" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
