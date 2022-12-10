@@ -37,7 +37,7 @@ public class MathMainApp {
         this.distance = this.vx0*this.time;
         this.distance = SF(this.distance,3);
     }
-    
+
     public double SF(double value,int point)
     {
         value=value*Math.pow(10, point);

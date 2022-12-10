@@ -105,6 +105,7 @@ public class MainAppController {
     //toolbar
     @FXML
     MenuItem mnItemClose;  
+    
 
     //menu items
 
@@ -210,6 +211,8 @@ public class MainAppController {
             pane.getChildren().addAll(poly,dot);
             pt.play();
             btnStart.setDisable(true);
+            
+
             
             
         }  
@@ -394,6 +397,7 @@ public class MainAppController {
         info.setResizable(true);
     }
     
+
     //Change the color of the ball methods
     public void handleBlueColor(){
         dot.setFill(color = Color.BLUE);
@@ -443,6 +447,7 @@ public class MainAppController {
         size = 5;
     }
     
+    //Display displacement of ball method
     //mutators
     public Polyline getPl() {
         return poly;
