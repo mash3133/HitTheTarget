@@ -35,12 +35,12 @@ public class MathMainApp {
         this.vy0 = this.speed*Math.sin(this.angle*(Math.PI/180.0));
         
         this.time = (this.vy+Math.pow(Math.pow(this.vy, 2)+(4*0.5*this.ay*this.y), 0.5))/this.ay;
-        this.time = SF(this.time,3);
+        this.time = plot(this.time,3);
         this.distance = this.vx0*this.time;
-        this.distance = SF(this.distance,3);
+        this.distance = plot(this.distance,3);
     }
 
-    public double SF(double value,int point)
+    public double plot(double value,int point)
     {
         value=value*Math.pow(10, point);
         value=Math.floor(value);
@@ -169,16 +169,16 @@ public class MathMainApp {
     }
     
     public double getCurrentX(double t){   
-        return SF(this.vx0*t,3);
+        return plot(this.vx0*t,3);
     }
     
     public double getCurrentY(double t){   
-        return SF(this.y0+(this.vy0*t-0.5*this.ay*t*t),3);
+        return plot(this.y0+(this.vy0*t-0.5*this.ay*t*t),3);
     }
 
     
     public double getCurrentV(double t){   
-        return SF(Math.pow(Math.pow(this.vx0, 2)+Math.pow(this.vy0-this.ay*t, 2), 0.5),3);
+        return plot(Math.pow(Math.pow(this.vx0, 2)+Math.pow(this.vy0-this.ay*t, 2), 0.5),3);
     }
 
 

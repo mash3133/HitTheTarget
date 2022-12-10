@@ -542,6 +542,14 @@ public class MainAppController{
         size = 5;
     }
     
+    public void handleSlowSpeed(){
+        speed = 1000;
+    }
+    
+    public void handleFastSpeed(){
+        speed = 5;
+    }
+    
     
     //mutators
     public Polyline getPl() {
