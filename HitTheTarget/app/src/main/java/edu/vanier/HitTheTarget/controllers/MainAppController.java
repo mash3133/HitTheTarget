@@ -139,6 +139,8 @@ public class MainAppController {
     @FXML
     MenuItem changeBallBrownGold;
     @FXML
+    MenuItem changeBallRandom;
+    @FXML
     MenuItem mnItemAbout; 
     @FXML
     MenuItem smallBall; 
@@ -251,8 +253,7 @@ public class MainAppController {
             items.add(mmp);
             animate();
             time();
-            accelerationVector();
-            pane.getChildren().addAll(poly,dot,accMars);
+            pane.getChildren().addAll(poly,dot);
             pt.play();
             listView.setItems(items);
             btnStart.setDisable(true);
@@ -479,6 +480,10 @@ public class MainAppController {
         ft3.setAutoReverse(true);
         ft3.play();
 
+    }
+    
+    public void handleRandomColor(){
+        dot.setFill(Color.color(Math.random(), Math.random(), Math.random()));
     }
     
     //Change size of the ball methods

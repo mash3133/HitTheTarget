@@ -108,6 +108,7 @@
                         <MenuItem fx:id="changeBallBlackWhite" mnemonicParsing="false" onAction="#handleBlackAndWhite" text="Black &amp; White" />
                         <MenuItem fx:id="changeBallBlueRed" mnemonicParsing="false" onAction="#handleBlueAndRed" text="Blue &amp; Red" />
                         <MenuItem fx:id="changeBallBrownGold" mnemonicParsing="false" onAction="#handleBrownAndGold" text="Brown &amp; Gold" />
+                        <MenuItem fx:id="changeBallRandom" mnemonicParsing="false" onAction="#handleRandomColor" text="Random" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Change ball's size">
