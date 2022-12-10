@@ -47,6 +47,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -237,8 +238,12 @@ public class MainAppController{
               double t=currentTime();
               currentGravity.setText(Double.toString(mmp.getAy())+" m/s^2");
               currentVelocity.setText(Double.toString(mmp.getCurrentV(t))+" m/s");
-              currentDisplacement.setText(Double.toString(mmp.getCurrentX(t))+" m");
               
+              if(Math.abs(mmp.getCurrentX(t)- mmp.getDistance())<2){
+                currentDisplacement.setText(mmp.getDistance()+" m");
+              }else{
+                currentDisplacement.setText(Double.toString(mmp.getCurrentX(t))+" m");
+              }
           }
         }
       ),
@@ -261,10 +266,12 @@ public class MainAppController{
             items.add(mmp);
             animate();
             time();
-            pane.getChildren().addAll(poly,dot);
+            accelerationVector();
+            pane.getChildren().addAll(poly,dot,accMars);
             pt.play();
             btnStart.setDisable(true);
             displayStats();
+            
             
         }  
         
@@ -511,7 +518,7 @@ public void chosenMass(ActionEvent event){
         size = 5;
     }
     
-    //Display displacement of ball method
+    
     //mutators
     public Polyline getPl() {
         return poly;
