@@ -5,6 +5,7 @@
 package edu.vanier.HitTheTarget.math;
 
 import java.util.ArrayList;
+import java.util.List;
 import javafx.geometry.Point2D;
 
 /**
@@ -16,6 +17,7 @@ public class MathMainApp {
     private double x,y,vx,vy,ax,ay,speed,time,angle,y0,vx0,vy0,distance;
     private final double dTime = 0.001;
     private ArrayList<Point2D> points;
+    
     
     //methods
     public MathMainApp(double y, double angle, double speed, double gravity) 

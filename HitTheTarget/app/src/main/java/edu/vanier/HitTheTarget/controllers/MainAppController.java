@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -130,14 +131,13 @@ public class MainAppController {
     MenuItem smallBall; 
     @FXML
     MenuItem bigBall; 
+    @FXML
+    ListView listView;        
     
     //Alternating colors transitions
     FillTransition ft1 = new FillTransition(Duration.millis(900), dot, Color.BLACK, Color.WHITE);
     FillTransition ft2 = new FillTransition(Duration.millis(900), dot, Color.BLUE, Color.RED);
     FillTransition ft3 = new FillTransition(Duration.millis(900), dot, Color.BROWN, Color.GOLD);
-        
-        
-      
 
 //methods
     public void handleSaveBtn(ActionEvent event) throws IOException{
@@ -159,6 +159,7 @@ public class MainAppController {
         mousePtLabel.setAlignment(Pos.CENTER);
         mousePtLabel.setText("X = " + (event.getX()) + "     Y = " + (event.getY()));
     }
+    
     //Change background depending on gravity chosen
     public void chosenGravity(ActionEvent event){
         
@@ -210,8 +211,6 @@ public class MainAppController {
             pane.getChildren().addAll(poly,dot);
             pt.play();
             btnStart.setDisable(true);
-            
-            
         }  
         
         if(Double.parseDouble(initialHeight.getText())>=760){
