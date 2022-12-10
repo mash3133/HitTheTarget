@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
@@ -106,6 +107,14 @@ public class MainAppController {
     //toolbar
     @FXML
     MenuItem mnItemClose;  
+    
+    //Labels
+    @FXML
+    Label currentGravity = new Label();
+    @FXML
+    Label currentVelocity = new Label();
+    @FXML
+    Label currentDisplacement = new Label();
 
     //menu items
 
@@ -197,6 +206,35 @@ public class MainAppController {
             
         }
     }
+    
+    //Display current stats
+    void displayStats()
+    {
+      timeline = new Timeline(
+      new KeyFrame(Duration.seconds(0),
+        new EventHandler<ActionEvent>() 
+        {
+          @Override public void handle(ActionEvent actionEvent) 
+          {
+              double t=currentTime();
+              currentGravity.setText(Double.toString(mmp.getAy())+" m/s^2");
+              currentVelocity.setText(Double.toString(mmp.getCurrentV(t))+" m/s");
+              
+              if(Math.abs(mmp.getCurrentX(t)- mmp.getDistance())<2){
+                currentDisplacement.setText(mmp.getDistance()+" m");
+              }else{
+                currentDisplacement.setText(Double.toString(mmp.getCurrentX(t))+" m");
+              }
+          }
+        }
+      ),
+      new KeyFrame(Duration.seconds(0.03))
+    );
+        timeline.setCycleCount((int) (mmp.getTime()/0.03/speed)+1);
+        timeline.play();
+    }
+    
+    
     //Plays the animation
     @FXML
     public void startEventHandler(Event e)
@@ -211,6 +249,8 @@ public class MainAppController {
             pane.getChildren().addAll(poly,dot);
             pt.play();
             btnStart.setDisable(true);
+            displayStats();
+            
         }  
         
         if(Double.parseDouble(initialHeight.getText())>=760){
@@ -393,6 +433,7 @@ public class MainAppController {
         info.setResizable(true);
     }
     
+
     //Change the color of the ball methods
     public void handleBlueColor(){
         dot.setFill(color = Color.BLUE);
@@ -442,6 +483,7 @@ public class MainAppController {
         size = 5;
     }
     
+    //Display displacement of ball method
     //mutators
     public Polyline getPl() {
         return poly;
