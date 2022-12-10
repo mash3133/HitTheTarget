@@ -520,8 +520,8 @@ public class MainAppController{
         dot.setFill(Color.color(Math.random(), Math.random(), Math.random()));
     }
     
-    //Change size of the ball methods
-public void chosenMass(ActionEvent event){
+    
+    public void chosenMass(ActionEvent event){
         
         if(light.isSelected()){
             size = 10;
@@ -533,7 +533,7 @@ public void chosenMass(ActionEvent event){
         } 
     }
     
-    
+    //Change size of the ball methods
     public void handleBigBall(){
         size = 9;
     }
