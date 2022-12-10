@@ -33,11 +33,13 @@ public class MainApp extends Application {
         primaryStage.setTitle("Hit The Target");
         try{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainApp_layout.fxml"));
-        loader.setController(new MainAppController());
+        MainAppController mainController = new MainAppController(primaryStage);
+        loader.setController(mainController);
         BorderPane root = loader.load();
         Scene scene = new Scene(root, 1500, 800);
+        //scene.getStylesheets().add(getClass().getResource("DarkMode.css").toExternalForm());
         primaryStage.setScene(scene);
-        primaryStage.setFullScreen(true);
+        primaryStage.setMaximized(true);
         primaryStage.show();
         }catch(Exception e){
             System.out.println(e);

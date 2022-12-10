@@ -23,7 +23,6 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -34,6 +33,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -49,7 +49,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -58,7 +57,12 @@ import javafx.util.Duration;
  *
  * @author maesh
  */
-public class MainAppController{    
+public class MainAppController{  
+    Stage primaryStage;
+
+    public MainAppController(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
     //variables
     private Polyline poly = new Polyline();
@@ -85,6 +89,8 @@ public class MainAppController{
     public static final String JUPITER_LANDSCAPE = IMAGES_FOLDER + "jupiter landscape.jpg";
     
     //buttons
+    @FXML
+    ToggleButton BtnDarkMode = new ToggleButton();
     @FXML
     Button btnStart = new Button();
     @FXML      
@@ -167,7 +173,25 @@ public class MainAppController{
     FillTransition ft3 = new FillTransition(Duration.millis(900), dot, Color.BROWN, Color.GOLD);
 
 //methods
-
+    public void handleDarkMode(ActionEvent event) throws IOException {
+        primaryStage.setTitle("Hit The Target");
+        System.out.println("dark mode was pressed");
+        try{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainApp_layout.fxml"));
+        MainAppController mainController = new MainAppController(primaryStage);
+        loader.setController(mainController);
+        BorderPane root = loader.load();
+        Scene scene = new Scene(root, 1500, 800);
+        scene.getRoot().setStyle("-fx-base:black");
+        primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
+        primaryStage.show();
+        }catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+    
+    
     public void handleSaveBtn(ActionEvent event) throws IOException{
         Stage stage2 = new Stage();
         stage2.initModality(Modality.APPLICATION_MODAL);
@@ -227,8 +251,7 @@ public class MainAppController{
     }
     
     //Display current stats
-    void displayStats()
-    {
+    void displayStats(){
       timeline = new Timeline(
       new KeyFrame(Duration.seconds(0),
         new EventHandler<ActionEvent>() 
@@ -360,8 +383,6 @@ public class MainAppController{
             btnStart.setDisable(false);
         }
     }
-    
-    
     
     //Pauses animation
     @FXML
@@ -951,6 +972,45 @@ public void chosenMass(ActionEvent event){
             System.out.println(ex.getMessage());
         }
     }
-    
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
+    public ToggleButton getBtnDarkMode() {
+        return BtnDarkMode;
+    }
+
+    public void setBtnDarkMode(ToggleButton BtnDarkMode) {
+        this.BtnDarkMode = BtnDarkMode;
+    }
+
+    public RadioButton getLight() {
+        return light;
+    }
+
+    public void setLight(RadioButton light) {
+        this.light = light;
+    }
+
+    public RadioButton getHeavy() {
+        return heavy;
+    }
+
+    public void setHeavy(RadioButton heavy) {
+        this.heavy = heavy;
+    }
+
+    public TextField getMass() {
+        return mass;
+    }
+
+    public void setMass(TextField mass) {
+        this.mass = mass;
+    }
     
 }
