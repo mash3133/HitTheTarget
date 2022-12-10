@@ -2,20 +2,25 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button layoutX="51.0" layoutY="223.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="110.0" text="Earth" />
-      <Label layoutX="127.0" layoutY="119.0" text="Hit The Target">
-         <font>
-            <Font size="55.0" />
-         </font>
-      </Label>
-      <Button layoutX="180.0" layoutY="223.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="110.0" text="Mars" />
-      <Button layoutX="311.0" layoutY="223.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="110.0" text="Moon" />
-      <Button layoutX="444.0" layoutY="223.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="110.0" text="Jupiter" />
-   </children>
-</Pane>
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="51.0" layoutY="223.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="110.0" text="Earth" />
+            <Label layoutX="127.0" layoutY="119.0" text="Hit The Target">
+               <font>
+                  <Font size="55.0" />
+               </font>
+            </Label>
+            <Button layoutX="180.0" layoutY="223.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="110.0" text="Mars" />
+            <Button layoutX="311.0" layoutY="223.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="110.0" text="Moon" />
+            <Button layoutX="444.0" layoutY="223.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="110.0" text="Jupiter" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
