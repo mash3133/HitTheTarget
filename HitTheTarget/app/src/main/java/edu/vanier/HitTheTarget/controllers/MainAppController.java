@@ -219,12 +219,8 @@ public class MainAppController {
               double t=currentTime();
               currentGravity.setText(Double.toString(mmp.getAy())+" m/s^2");
               currentVelocity.setText(Double.toString(mmp.getCurrentV(t))+" m/s");
+              currentDisplacement.setText(Double.toString(mmp.getCurrentX(t))+" m");
               
-              if(Math.abs(mmp.getCurrentX(t)- mmp.getDistance())<2){
-                currentDisplacement.setText(mmp.getDistance()+" m");
-              }else{
-                currentDisplacement.setText(Double.toString(mmp.getCurrentX(t))+" m");
-              }
           }
         }
       ),
