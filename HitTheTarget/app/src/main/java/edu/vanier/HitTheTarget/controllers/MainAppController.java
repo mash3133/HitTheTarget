@@ -237,14 +237,14 @@ public class MainAppController{
         {
           @Override public void handle(ActionEvent actionEvent) 
           {
-              double t=currentTime();
+              double time=currentTime();
               currentGravity.setText(Double.toString(mmp.getAy())+" m/s^2");
-              currentVelocity.setText(Double.toString(mmp.getCurrentV(t))+" m/s");
+              currentVelocity.setText(Double.toString(mmp.getCurrentV(time))+" m/s");
               
-              if(Math.abs(mmp.getCurrentX(t)- mmp.getDistance())<2){
+              if(Math.abs(mmp.getCurrentX(time)- mmp.getDistance())<2){
                 currentDisplacement.setText(mmp.getDistance()+" m");
               }else{
-                currentDisplacement.setText(Double.toString(mmp.getCurrentX(t))+" m");
+                currentDisplacement.setText(Double.toString(mmp.getCurrentX(time))+" m");
               }
           }
         }
@@ -943,7 +943,7 @@ public void chosenMass(ActionEvent event){
         DataBaseConnection connectNow = new DataBaseConnection();
         Connection connectDB = connectNow.getConnection();
         
-        String connectQuery = "SELECT * AminiVenom";
+        String connectQuery = "SELECT * HitTheTarget";
         try
         {
             Statement statement=connectDB.createStatement();
