@@ -39,6 +39,7 @@
                         <Label layoutX="37.0" layoutY="382.0" text="Angle (°) : " />
                         <TextField fx:id="angle" layoutX="121.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
                   <Button fx:id="saveBtn" layoutX="103.0" layoutY="452.0" mnemonicParsing="false" onAction="#handleSaveBtn" text="Save" />
+                  <RadioButton fx:id="jupiter" layoutX="97.0" layoutY="245.0" mnemonicParsing="false" onAction="#chosenGravity" text="Jupiter" toggleGroup="$gravityOptions" />
                     </children>
                 </Pane>
             </children>
