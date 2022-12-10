@@ -2,7 +2,9 @@ package edu.vanier.HitTheTarget.controllers;
 
 import edu.vanier.HitTheTarget.math.MathMainApp;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import javafx.animation.FillTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -65,6 +67,7 @@ public class MainAppController {
     private static int size = 6;
     private static Color color = Color.BLACK;
     private static int speed = 1;
+    protected int counter = 0;
     Stage Stage;
     
     private static final String RESOURCES_FOLDER = "";
@@ -236,6 +239,7 @@ public class MainAppController {
     
     
     //Plays the animation
+   
     @FXML
     public void startEventHandler(Event e)
     {
@@ -248,6 +252,7 @@ public class MainAppController {
             time();
             pane.getChildren().addAll(poly,dot);
             pt.play();
+            listView.setItems(items);
             btnStart.setDisable(true);
             displayStats();
             
