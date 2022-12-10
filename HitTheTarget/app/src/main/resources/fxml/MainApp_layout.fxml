@@ -40,6 +40,9 @@
                         <TextField fx:id="angle" layoutX="121.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
                   <Button fx:id="saveBtn" layoutX="103.0" layoutY="452.0" mnemonicParsing="false" onAction="#handleSaveBtn" text="Save" />
                   <RadioButton fx:id="jupiter" layoutX="97.0" layoutY="245.0" mnemonicParsing="false" onAction="#chosenGravity" text="Jupiter" toggleGroup="$gravityOptions" />
+                  <Label fx:id="currentGravity" layoutX="18.0" layoutY="495.0" text="Gravity" />
+                  <Label fx:id="currentVelocity" layoutX="16.0" layoutY="519.0" text="Velocity" />
+                  <Label fx:id="currentDisplacement" layoutX="113.0" layoutY="503.0" prefHeight="17.0" prefWidth="82.0" text="Displacement" />
                     </children>
                 </Pane>
             </children>
