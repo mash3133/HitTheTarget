@@ -4,7 +4,6 @@
  */
 package edu.vanier.HitTheTarget.math;
 
-import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,8 +24,6 @@ public class SavedFileCSV {
         File file = new File(filePath);
         
         FileWriter outputfile = new FileWriter(file);
-        
-        CSVWriter writer = new CSVWriter(outputfile);
     }
     
     public static ObservableList getSavedFileList(){
