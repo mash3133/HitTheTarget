@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="96.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There has been an error:">
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Text>
+            <Text layoutX="113.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make sure to:">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
+            <Text layoutX="102.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Enter numbers only" />
+            <Text layoutX="102.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. write numbers only within the range" />
+            <Text layoutX="102.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Restart the app" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

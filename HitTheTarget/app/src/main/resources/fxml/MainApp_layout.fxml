@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -26,23 +27,35 @@
                     <children>
                         <Label layoutX="24.0" layoutY="85.0" text="Initial velocity (m/s) :" />
                         <TextField fx:id="initialVelocity" layoutX="138.0" layoutY="81.0" prefHeight="25.0" prefWidth="59.0" />
-                        <Label layoutX="79.0" layoutY="165.0" text="Gravity (m/s^2) :" />
-                        <RadioButton fx:id="mars" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Mars">
+                        <Label layoutX="81.0" layoutY="140.0" text="Gravity (m/s^2) :" />
+                        <RadioButton fx:id="mars" layoutX="32.0" layoutY="172.0" mnemonicParsing="false" onAction="#chosenGravity" text="Mars">
                      <toggleGroup>
                         <ToggleGroup fx:id="gravityOptions" />
                      </toggleGroup>
                   </RadioButton>
-                        <RadioButton fx:id="earth" layoutX="97.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Earth" toggleGroup="$gravityOptions" />
-                        <RadioButton fx:id="moon" layoutX="176.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Moon" toggleGroup="$gravityOptions" />
-                        <Label layoutX="17.0" layoutY="312.0" prefHeight="17.0" prefWidth="97.0" text="Initial height (m) :" />
-                        <TextField fx:id="initialHeight" layoutX="121.0" layoutY="308.0" prefHeight="25.0" prefWidth="85.0" />
-                        <Label layoutX="37.0" layoutY="382.0" text="Angle (°) : " />
-                        <TextField fx:id="angle" layoutX="121.0" layoutY="378.0" prefHeight="25.0" prefWidth="85.0" />
-                  <Button fx:id="saveBtn" layoutX="103.0" layoutY="452.0" mnemonicParsing="false" onAction="#handleSaveBtn" text="Save" />
-                  <RadioButton fx:id="jupiter" layoutX="97.0" layoutY="245.0" mnemonicParsing="false" onAction="#chosenGravity" text="Jupiter" toggleGroup="$gravityOptions" />
-                  <Label fx:id="currentGravity" layoutX="18.0" layoutY="495.0" text="Gravity" />
-                  <Label fx:id="currentVelocity" layoutX="16.0" layoutY="519.0" text="Velocity" />
-                  <Label fx:id="currentDisplacement" layoutX="113.0" layoutY="503.0" prefHeight="17.0" prefWidth="82.0" text="Displacement" />
+                        <RadioButton fx:id="earth" layoutX="34.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Earth" toggleGroup="$gravityOptions" />
+                        <RadioButton fx:id="moon" layoutX="129.0" layoutY="172.0" mnemonicParsing="false" onAction="#chosenGravity" text="Moon" toggleGroup="$gravityOptions" />
+                        <Label layoutX="19.0" layoutY="270.0" prefHeight="17.0" prefWidth="97.0" text="Initial height (m) :" />
+                        <TextField fx:id="initialHeight" layoutX="125.0" layoutY="266.0" prefHeight="25.0" prefWidth="85.0" />
+                        <Label layoutX="23.0" layoutY="317.0" text="Angle (°) : " />
+                        <TextField fx:id="angle" layoutX="121.0" layoutY="313.0" prefHeight="25.0" prefWidth="85.0" />
+                  <RadioButton fx:id="jupiter" layoutX="129.0" layoutY="202.0" mnemonicParsing="false" onAction="#chosenGravity" text="Jupiter" toggleGroup="$gravityOptions" />
+                  <Label fx:id="currentGravity" layoutX="100.0" layoutY="508.0" text="Gravity" />
+                  <Label fx:id="currentDisplacement" layoutX="84.0" layoutY="490.0" prefHeight="17.0" prefWidth="82.0" text="Displacement" />
+                  <Label layoutX="24.0" layoutY="437.0" text="Stats" />
+                  <Label layoutX="23.0" layoutY="390.0" text="Mass (kg):  " />
+                  <RadioButton fx:id="light" layoutX="103.0" layoutY="384.0" mnemonicParsing="false" onAction="#chosenMass" text="light">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gravityOptions1" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="heavy" layoutX="103.0" layoutY="416.0" mnemonicParsing="false" onAction="#chosenMass" text="heavy">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gravityOptions2" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <Label fx:id="currentVelocity" layoutX="99.0" layoutY="526.0" prefHeight="18.0" prefWidth="52.0" text="Velocity" />
+                  <ListView fx:id="listView" layoutX="62.0" layoutY="23.0" prefHeight="43.0" prefWidth="115.0" />
                     </children>
                 </Pane>
             </children>
@@ -87,7 +100,14 @@
                         </ImageView>
                     </graphic>
                 </Button>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="saveBtn" layoutX="24.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleSaveBtn" text="Save" />
+                     </children>
+                  </Pane>
+               </children></HBox>
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" />

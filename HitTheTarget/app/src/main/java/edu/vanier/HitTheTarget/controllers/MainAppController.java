@@ -1,8 +1,13 @@
 package edu.vanier.HitTheTarget.controllers;
 
+import edu.vanier.HitTheTarget.database.DataBaseConnection;
 import edu.vanier.HitTheTarget.math.MathMainApp;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.animation.FillTransition;
@@ -18,6 +23,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -52,7 +58,7 @@ import javafx.util.Duration;
  *
  * @author maesh
  */
-public class MainAppController {    
+public class MainAppController{    
 
     //variables
     private Polyline poly = new Polyline();
@@ -92,6 +98,12 @@ public class MainAppController {
     @FXML
     ToggleGroup gravityOptions = new ToggleGroup();
     @FXML
+    ToggleGroup massOptions = new ToggleGroup();
+    @FXML
+    RadioButton light = new RadioButton();
+    @FXML
+    RadioButton heavy = new RadioButton();
+    @FXML
     RadioButton mars = new RadioButton();
     @FXML
     RadioButton earth = new RadioButton();
@@ -108,6 +120,8 @@ public class MainAppController {
     TextField initialHeight = new TextField();
     @FXML
     TextField angle = new TextField();
+    @FXML
+    TextField mass = new TextField();
     //toolbar
     @FXML
     MenuItem mnItemClose;  
@@ -147,7 +161,7 @@ public class MainAppController {
     @FXML
     MenuItem bigBall; 
     @FXML
-    ListView listView;        
+    private ListView<String> listView;        
     
     //Alternating colors transitions
     FillTransition ft1 = new FillTransition(Duration.millis(900), dot, Color.BLACK, Color.WHITE);
@@ -155,6 +169,7 @@ public class MainAppController {
     FillTransition ft3 = new FillTransition(Duration.millis(900), dot, Color.BROWN, Color.GOLD);
 
 //methods
+
     public void handleSaveBtn(ActionEvent event) throws IOException{
         Stage stage2 = new Stage();
         stage2.initModality(Modality.APPLICATION_MODAL);
@@ -255,11 +270,8 @@ public class MainAppController {
             time();
             pane.getChildren().addAll(poly,dot);
             pt.play();
-            listView.setItems(items);
             btnStart.setDisable(true);
             displayStats();
-            
-            
         }  
         
         if(Double.parseDouble(initialHeight.getText())>=760){
@@ -356,7 +368,7 @@ public class MainAppController {
     //Pauses animation
     @FXML
     public void pauseEventHandler(Event e) {
-        btnStart.setDisable(false);   
+        btnStart.setDisable(true);   
         timeline.pause();
         pt.pause();
     }
@@ -364,6 +376,7 @@ public class MainAppController {
     //Resumes animation
     @FXML
     public void resumeEventHandler(Event e) {
+        btnStart.setDisable(true);
         timeline.play();
         pt.play();
     }
@@ -487,6 +500,18 @@ public class MainAppController {
     }
     
     //Change size of the ball methods
+public void chosenMass(ActionEvent event){
+        
+        if(light.isSelected()){
+            size = 10;
+            mass.setText("10");
+        } 
+        else if (heavy.isSelected()){
+            size = 3;
+            mass.setText("3");
+        } 
+    }
+    
     
     public void handleBigBall(){
         size = 9;
@@ -682,14 +707,6 @@ public class MainAppController {
         this.resumeBtn = resumeBtn;
     }
 
-    public ToggleGroup getGravityOptions() {
-        return gravityOptions;
-    }
-
-    public void setGravityOptions(ToggleGroup gravityOptions) {
-        this.gravityOptions = gravityOptions;
-    }
-
     public RadioButton getMars() {
         return mars;
     }
@@ -792,6 +809,153 @@ public class MainAppController {
 
     public void setMnItemAbout(MenuItem mnItemAbout) {
         this.mnItemAbout = mnItemAbout;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    public Stage getStage() {
+        return Stage;
+    }
+
+    public void setStage(Stage Stage) {
+        this.Stage = Stage;
+    }
+
+    public ToggleGroup getGravityOptions() {
+        return gravityOptions;
+    }
+
+    public void setGravityOptions(ToggleGroup gravityOptions) {
+        this.gravityOptions = gravityOptions;
+    }
+
+    public ToggleGroup getMassOptions() {
+        return massOptions;
+    }
+
+    public void setMassOptions(ToggleGroup massOptions) {
+        this.massOptions = massOptions;
+    }
+
+    public Label getCurrentGravity() {
+        return currentGravity;
+    }
+
+    public void setCurrentGravity(Label currentGravity) {
+        this.currentGravity = currentGravity;
+    }
+
+    public Label getCurrentVelocity() {
+        return currentVelocity;
+    }
+
+    public void setCurrentVelocity(Label currentVelocity) {
+        this.currentVelocity = currentVelocity;
+    }
+
+    public Label getCurrentDisplacement() {
+        return currentDisplacement;
+    }
+
+    public void setCurrentDisplacement(Label currentDisplacement) {
+        this.currentDisplacement = currentDisplacement;
+    }
+
+    public MenuItem getChangeBallBlackWhite() {
+        return changeBallBlackWhite;
+    }
+
+    public void setChangeBallBlackWhite(MenuItem changeBallBlackWhite) {
+        this.changeBallBlackWhite = changeBallBlackWhite;
+    }
+
+    public MenuItem getChangeBallBlueRed() {
+        return changeBallBlueRed;
+    }
+
+    public void setChangeBallBlueRed(MenuItem changeBallBlueRed) {
+        this.changeBallBlueRed = changeBallBlueRed;
+    }
+
+    public MenuItem getChangeBallBrownGold() {
+        return changeBallBrownGold;
+    }
+
+    public void setChangeBallBrownGold(MenuItem changeBallBrownGold) {
+        this.changeBallBrownGold = changeBallBrownGold;
+    }
+
+    public MenuItem getSmallBall() {
+        return smallBall;
+    }
+
+    public void setSmallBall(MenuItem smallBall) {
+        this.smallBall = smallBall;
+    }
+
+    public MenuItem getBigBall() {
+        return bigBall;
+    }
+
+    public void setBigBall(MenuItem bigBall) {
+        this.bigBall = bigBall;
+    }
+
+    public ListView<String> getListView() {
+        return listView;
+    }
+
+    public void setListView(ListView<String> listView) {
+        this.listView = listView;
+    }
+
+    public FillTransition getFt1() {
+        return ft1;
+    }
+
+    public void setFt1(FillTransition ft1) {
+        this.ft1 = ft1;
+    }
+
+    public FillTransition getFt2() {
+        return ft2;
+    }
+
+    public void setFt2(FillTransition ft2) {
+        this.ft2 = ft2;
+    }
+
+    public FillTransition getFt3() {
+        return ft3;
+    }
+
+    public void setFt3(FillTransition ft3) {
+        this.ft3 = ft3;
+    }
+    
+    public void initialize(URL location, ResourceBundle resources) {
+        DataBaseConnection connectNow = new DataBaseConnection();
+        Connection connectDB = connectNow.getConnection();
+        
+        String connectQuery = "SELECT * AminiVenom";
+        try
+        {
+            Statement statement=connectDB.createStatement();
+            ResultSet resultSet=statement.executeQuery(connectQuery);
+            initialHeight.setText(String.valueOf(resultSet.getDouble("Initial Height")));
+            angle.setText(String.valueOf(resultSet.getDouble("Angle")));
+            initialVelocity.setText(String.valueOf(resultSet.getDouble("Initial Velocity")));
+            mass.setText(String.valueOf(resultSet.getDouble("Mass")));
+        }catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
     }
     
     
